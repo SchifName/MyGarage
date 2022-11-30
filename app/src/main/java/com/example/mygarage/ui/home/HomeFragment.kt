@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
+import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -55,7 +57,10 @@ class HomeFragment : Fragment() {
         binding.apply {
             recyclerView.adapter = adapter
         }
-
+        binding.fab.setOnClickListener {
+                val action = HomeFragmentDirections.actionNavigationHomeToAddNewCarFragment()
+                this.findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.example.mygarage.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_addNewCarFragment"
+            app:destination="@id/addNewCarFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
@@ -22,4 +26,13 @@
         android:name="com.example.mygarage.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/addNewCarFragment"
+        android:name="com.example.mygarage.ui.addCar.AddNewCarFragment"
+        android:label="fragment_add_new_car"
+        tools:layout="@layout/fragment_add_new_car" >
+        <action
+            android:id="@+id/action_addNewCarFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>
