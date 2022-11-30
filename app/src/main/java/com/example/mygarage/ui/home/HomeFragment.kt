@@ -5,11 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.databinding.FragmentHomeBinding
 
@@ -22,6 +19,9 @@ class HomeFragment : Fragment() {
             (activity?.application as BaseApplication).database.CarDao()
         )
     }
+
+
+
 
     private val binding get() = _binding!!
 
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         try {
-            homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
+            //homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
         } catch (e: java.lang.Exception)
         {
             Log.d("error1", e.toString())
@@ -55,6 +55,7 @@ class HomeFragment : Fragment() {
         binding.apply {
             recyclerView.adapter = adapter
         }
+
     }
 
     override fun onDestroyView() {

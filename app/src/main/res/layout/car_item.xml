@@ -8,10 +8,8 @@
         <variable
             name="car"
             type="com.example.mygarage.model.Car" />
-        <!--<import
-            alias="ExtensionFunctions"
-            type="com.example.mygarage.model.Car" />-->
     </data>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
@@ -50,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="@{}"
+                android:text="@{car.brand}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/car_image"
@@ -64,7 +62,7 @@
                 android:layout_width="37dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="4dp"
-                android:text="@{}"
+                android:text="@{car.model}"
                 app:layout_constraintStart_toStartOf="@id/car_brand"
                 app:layout_constraintTop_toBottomOf="@id/car_brand"
                 tools:text="Modello">
@@ -102,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
-                android:text="@{}"
+                android:text="@{car.fuelType}"
                 android:textSize="@dimen/card_item_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/car_power"
