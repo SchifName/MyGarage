@@ -28,10 +28,10 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSearch
+        /*val textView: TextView = binding.textSearch
         searchViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         return root
     }
 

@@ -15,4 +15,11 @@
     <string name="brand_add">Brand</string>
     <string name="new_car">NEW CAR</string>
     <string name="title_garage">MY GARAGE</string>
+    <string name="min_price">Min</string>
+    <string name="max_price">Max</string>
+    <string name="price_search_label">PRICE RANGE</string>
+    <string name="brand_search">Brand</string>
+    <string name="brand_search_label">BRAND AND MODEL</string>
+    <string name="model_price">Model</string>
+    <string name="search_car">SEARCH</string>
 </resources>

@@ -8,9 +8,9 @@
         <variable
             name="car"
             type="com.example.mygarage.model.Car" />
-        <import
+        <!--<import
             alias="ExtensionFunctions"
-            type="com.example.mygarage.model.Car" />
+            type="com.example.mygarage.model.Car" />-->
     </data>
 
     <androidx.cardview.widget.CardView
@@ -101,24 +101,31 @@
                 android:id="@+id/car_fuel_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginEnd="15dp"
                 android:text="@{}"
                 android:textSize="@dimen/card_item_text_size"
-                app:layout_constraintEnd_toStartOf="@+id/car_year_production"
-                app:layout_constraintStart_toEndOf="@+id/car_power"
-                app:layout_constraintTop_toBottomOf="@id/car_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/car_power"
                 tools:text="Elettrico"></TextView>
 
             <TextView
                 android:id="@+id/car_year_production"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginTop="7dp"
                 android:textSize="@dimen/card_item_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/car_image"
+                app:layout_constraintStart_toStartOf="@+id/car_power"
+                app:layout_constraintTop_toBottomOf="@+id/car_power"
                 tools:text="2022"></TextView>
+
+            <TextView
+                android:id="@+id/car_mileage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/card_item_text_size"
+                app:layout_constraintEnd_toEndOf="@+id/car_fuel_type"
+                app:layout_constraintTop_toTopOf="@+id/car_year_production"
+                tools:text="10000km"></TextView>
 
             <Button
                 android:id="@+id/extend_button_car_item"
@@ -129,6 +136,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/car_year_production" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
