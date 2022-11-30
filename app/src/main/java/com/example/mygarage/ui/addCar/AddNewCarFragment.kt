@@ -11,13 +11,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentAddNewCarBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+
+//import com.google.android.material.snackbar.Snackbar
 
 class AddNewCarFragment : Fragment() {
 
-    companion object {
+    /*companion object {
         fun newInstance() = AddNewCarFragment()
-    }
+    }*/
 
     private lateinit var viewModel: AddNewCarViewModel
 
@@ -40,8 +43,18 @@ class AddNewCarFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddNewCarViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
+        navBar.visibility = View.GONE
+        binding.apply {
+            buttonAddNewCar
+        }
+    }
+
     private fun addNewCar() {
         if (isValidCar()) {
             addNewCarViewModel.addCar(
@@ -49,8 +62,8 @@ class AddNewCarFragment : Fragment() {
                 YearOfProduction = binding.carYearAddText.text.toString().toInt(),
                 Model = binding.carModelAddText.text.toString(),
                 FuelType = binding.carFuelTypeAddText.text.toString(),
-                Power = binding.carPowerAddText,
-                Price = binding.carPriceAddText,
+                Power = Integer.parseInt(binding.carPowerAddText.getText().toString()),
+                Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 //Image = checkIfInsertIsNull(createBitmapFromView(binding.carImage1))
                 Image = null
@@ -74,8 +87,8 @@ class AddNewCarFragment : Fragment() {
                 binding.carYearAddText.text.toString().toInt(),
                 binding.carModelAddText.text.toString(),
                 binding.carFuelTypeAddText.text.toString(),
-                binding.carPowerAddText,
-                binding.carPriceAddText,
+                Integer.parseInt(binding.carPowerAddText.getText().toString()),
+                binding.carPriceAddText.text.toString().toDouble(),
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
