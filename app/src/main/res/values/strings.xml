@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyGarage</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="new_car_content_description">Add new car</string>
+    <string name="add_new_car">ADD</string>
+    <string name="mileage_text">Mileage</string>
+    <string name="price_add">Price</string>
+    <string name="seats_add">Seats</string>
+    <string name="power_add">Power (kW)</string>
+    <string name="fuel_type_add">Fuel Type</string>
+    <string name="model_add">Model</string>
+    <string name="year_add">Production Year</string>
+    <string name="brand_add">Brand</string>
+    <string name="new_car">NEW CAR</string>
+    <string name="title_garage">MY GARAGE</string>
+</resources>
