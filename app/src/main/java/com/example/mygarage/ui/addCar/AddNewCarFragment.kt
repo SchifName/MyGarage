@@ -52,7 +52,8 @@ class AddNewCarFragment : Fragment() {
                 Power = binding.carPowerAddText,
                 Price = binding.carPriceAddText,
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
-                Image = checkIfInsertIsNull(createBitmapFromView(binding.carImage1))
+                //Image = checkIfInsertIsNull(createBitmapFromView(binding.carImage1))
+                Image = null
             )
             val action = AddNewCarFragmentDirections.
             actionAddNewCarFragmentToNavigationHome()
@@ -78,11 +79,11 @@ class AddNewCarFragment : Fragment() {
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
-            showCustomSnackBar(
+            /*showCustomSnackBar(
                 binding.constraintLayoutAddNewCar,
                 getString(R.string.error_add_car_toast),
                 Snackbar.LENGTH_LONG
-            )
+            )*/
             false
         }
     }

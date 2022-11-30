@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.example.mygarage.model.CarInfo
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 
@@ -30,8 +31,8 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         year: Int,
         model: String,
         fuelType: String,
-        power: Int,
-        price: Double,
+        power: TextInputEditText,
+        price: TextInputEditText,
         mileage: Double
     ): Boolean {
         return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power != 0 && power.toString().length <= 4 && price != 0.0 && mileage != 0.0 && mileage.toString().length < 10
@@ -41,9 +42,9 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         Brand: String,
         Model: String,
         YearOfProduction: Int,
-        Power: Int,
+        Power: TextInputEditText,
         FuelType: String,
-        Price: Double,
+        Price: TextInputEditText,
         Image: Bitmap?,
         Mileage: Double
     ) {
