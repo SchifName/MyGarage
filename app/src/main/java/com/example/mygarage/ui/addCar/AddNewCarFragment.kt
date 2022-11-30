@@ -1,7 +1,7 @@
 package com.example.mygarage.ui.addCar
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +12,9 @@ import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 
-//import com.google.android.material.snackbar.Snackbar
 
 class AddNewCarFragment : Fragment() {
-
-    /*companion object {
-        fun newInstance() = AddNewCarFragment()
-    }*/
 
     private lateinit var viewModel: AddNewCarViewModel
 
@@ -37,13 +31,8 @@ class AddNewCarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_new_car, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddNewCarViewModel::class.java)
-
+        _binding = FragmentAddNewCarBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,7 +40,9 @@ class AddNewCarFragment : Fragment() {
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility = View.GONE
         binding.apply {
-            buttonAddNewCar
+            buttonAddNewCar.setOnClickListener{
+                addNewCar()
+            }
         }
     }
 
@@ -62,7 +53,7 @@ class AddNewCarFragment : Fragment() {
                 YearOfProduction = binding.carYearAddText.text.toString().toInt(),
                 Model = binding.carModelAddText.text.toString(),
                 FuelType = binding.carFuelTypeAddText.text.toString(),
-                Power = Integer.parseInt(binding.carPowerAddText.getText().toString()),
+                Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 //Image = checkIfInsertIsNull(createBitmapFromView(binding.carImage1))
@@ -72,11 +63,7 @@ class AddNewCarFragment : Fragment() {
             actionAddNewCarFragmentToNavigationHome()
             findNavController().navigate(action)
         } else {
-            /*showCustomSnackBar(
-                binding.constraintLayoutAddNewCar,
-                getString(R.string.error_add_car_toast),
-                Snackbar.LENGTH_LONG
-            )*/
+            Log.d("error", "errore nella validità")
         }
     }
 
@@ -87,16 +74,12 @@ class AddNewCarFragment : Fragment() {
                 binding.carYearAddText.text.toString().toInt(),
                 binding.carModelAddText.text.toString(),
                 binding.carFuelTypeAddText.text.toString(),
-                Integer.parseInt(binding.carPowerAddText.getText().toString()),
+                binding.carPowerAddText.text.toString().toInt(),
                 binding.carPriceAddText.text.toString().toDouble(),
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
-            /*showCustomSnackBar(
-                binding.constraintLayoutAddNewCar,
-                getString(R.string.error_add_car_toast),
-                Snackbar.LENGTH_LONG
-            )*/
+            Log.d("error", "errore in isValidCar "+e)
             false
         }
     }
