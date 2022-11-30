@@ -12,46 +12,6 @@ import java.io.ByteArrayOutputStream
 class HomeViewModel(private val CarDao: CarDao) : ViewModel() {
     val allCars: LiveData<List<Car>> = CarDao.getCars().asLiveData()
 
-    fun addCar(
-        Brand: String,
-        Model: String,
-        YearOfProduction: Int,
-        Power: Int,
-        FuelType: String,
-        Price: Double,
-        Image: Bitmap?,
-        Mileage: Double
-    ) {
-        val car = Car(
-            brand = Brand,
-            model = Model,
-            yearOfProduction = YearOfProduction,
-            power = Power,
-            fuelType = FuelType,
-            price = Price,
-            image = Image?.toByteArray(),
-            mileage = Mileage
-        )
-
-        viewModelScope.launch {
-            CarDao.insert(car)
-        }
-    }
-    fun updateCar(car: Car) {
-        val updatedCar = Car(
-            id = car.id,
-            brand = car.brand,
-            model = car.model,
-            yearOfProduction = car.yearOfProduction,
-            power = car.power,
-            fuelType = car.fuelType,
-            price = car.price,
-            mileage = car.mileage,
-            image = car.image,
-        )
-        updateCarDatabase(updatedCar)
-    }
-
     fun updateCarDatabase(car: Car) {
         CoroutineScope(Dispatchers.IO).launch {
             CarDao.update(car)

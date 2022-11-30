@@ -29,8 +29,8 @@
     <fragment
         android:id="@+id/addNewCarFragment"
         android:name="com.example.mygarage.ui.addCar.AddNewCarFragment"
-        android:label="fragment_add_new_car"
-        tools:layout="@layout/fragment_add_new_car" >
+        android:label="ADD CAR"
+        tools:layout="@layout/fragment_add_new_car">
         <action
             android:id="@+id/action_addNewCarFragment_to_navigation_home"
             app:destination="@id/navigation_home" />

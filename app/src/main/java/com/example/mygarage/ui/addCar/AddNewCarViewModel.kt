@@ -5,7 +5,6 @@ import androidx.lifecycle.*
 import com.example.mygarage.model.CarInfo
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 
@@ -64,16 +63,6 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         }
     }
 
-    /*fun refreshDataFromNetwork() = viewModelScope.launch {
-        try {
-            _carList.value = VehicleApi.retrofitService.getCarInfo()
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-
-        } catch (networkError: IOException) {
-            _eventNetworkError.value = true
-        }
-    }*/
 
     private fun Bitmap.toByteArray(quality: Int = 100): ByteArray {
         val stream = ByteArrayOutputStream()

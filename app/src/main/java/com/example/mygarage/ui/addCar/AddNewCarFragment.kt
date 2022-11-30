@@ -41,6 +41,7 @@ class AddNewCarFragment : Fragment() {
         navBar.visibility = View.GONE
         binding.apply {
             buttonAddNewCar.setOnClickListener{
+                navBar.visibility = View.VISIBLE
                 addNewCar()
             }
         }
@@ -83,4 +84,5 @@ class AddNewCarFragment : Fragment() {
             false
         }
     }
+    
 }

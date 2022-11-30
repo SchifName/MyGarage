@@ -1,6 +1,7 @@
 package com.example.mygarage
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -31,5 +32,12 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navBar: BottomNavigationView = findViewById(R.id.nav_view)
+        navBar.visibility = View.VISIBLE
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
