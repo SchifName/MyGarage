@@ -47,7 +47,7 @@
                 android:id="@+id/car_brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="25dp"
                 android:text="@{car.brand}"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -85,7 +85,6 @@
                 android:id="@+id/car_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="4dp"
                 android:text="@{}"
                 android:textSize="@dimen/card_item_text_size"
@@ -99,8 +98,7 @@
                 android:id="@+id/car_fuel_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:text="@{car.fuelType}"
+                android:layout_marginEnd="25dp"
                 android:textSize="@dimen/card_item_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/car_power"
@@ -112,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:textSize="@dimen/card_item_text_size"
+                app:layout_constraintEnd_toEndOf="@+id/car_power"
                 app:layout_constraintStart_toStartOf="@+id/car_power"
                 app:layout_constraintTop_toBottomOf="@+id/car_power"
                 tools:text="2022"></TextView>
@@ -122,6 +121,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/card_item_text_size"
                 app:layout_constraintEnd_toEndOf="@+id/car_fuel_type"
+                app:layout_constraintStart_toStartOf="@+id/car_fuel_type"
                 app:layout_constraintTop_toTopOf="@+id/car_year_production"
                 tools:text="10000km"></TextView>
 

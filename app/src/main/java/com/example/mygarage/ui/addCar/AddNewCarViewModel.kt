@@ -34,7 +34,7 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         price: Double,
         mileage: Double
     ): Boolean {
-        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power != 0 && power.toString().length <= 4 && price != 0.0 && mileage != 0.0 && mileage.toString().length < 10
+        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power != 0 && power.toString().length <= 4 && price != 0.0 && mileage != 0.0 && mileage.toString().length < 6
     }
 
     fun addCar(

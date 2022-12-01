@@ -32,10 +32,8 @@ fun carMileageWithUnitString(mileage: Double): String {
     return "$mileage Km"
 }
 
-enum class fuelType{
-    Petrol,
-    Diesel,
-    Electric,
-    Gas,
-    Other
+fun formatCurrency(price:Double): String{
+    val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    return format.format(price)
 }
+

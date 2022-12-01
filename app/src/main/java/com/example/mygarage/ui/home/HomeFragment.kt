@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
-import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -21,9 +20,6 @@ class HomeFragment : Fragment() {
             (activity?.application as BaseApplication).database.CarDao()
         )
     }
-
-
-
 
     private val binding get() = _binding!!
 
@@ -46,7 +42,11 @@ class HomeFragment : Fragment() {
             Log.d("error1", e.toString())
         }
 
-        val adapter = HomeListAdapter()
+        val adapter = HomeListAdapter(clickListener = { car ->
+            val action = HomeFragmentDirections
+                .actionNavigationHomeToCarDetailFragment(car.id)
+            findNavController().navigate(action)
+        })
 
         homeViewModel.allCars.observe(this.viewLifecycleOwner) { carSelected ->
             carSelected.let {

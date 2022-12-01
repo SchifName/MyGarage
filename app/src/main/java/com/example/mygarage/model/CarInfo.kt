@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 
 data class CarInfo(
     @SerializedName("YEAR") val year: String,
-    @SerializedName("MAKER") val maker: String,
     @SerializedName("ENGINE") val engine: String,
-    @SerializedName("ENGINEMAKER") val engineMaker: String,
+    @SerializedName("PRICE") val price: String,
     @SerializedName("MODEL") val model: String,
-    @SerializedName("FULLMODELNAME") val fullModelName: String,
+    @SerializedName("DOOR") val door: String,
+    @SerializedName("SEATS") val seats: String,
 )
 
-data class CarLogo(
+/*data class CarLogo(
     @SerializedName("name") val name: String,
     @SerializedName("logo") val logo: String,
-)
+)*/
