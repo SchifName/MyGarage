@@ -65,10 +65,10 @@ class CarDetailFragment : Fragment() {
             brandDetail.text = car.brand
             modelDetail.text = car.model
             priceTitle.text = getString(R.string.price_detail_string, formatCurrency(car.price))
-            textView4.text = getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
-            textView5.text = getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
-            textView9.text = getString(R.string.fuel_type_detail_string, car.fuelType)
-            textView8.text = getString(R.string.year_detail_string, car.yearOfProduction.toString())
+            carPowerDetail.text = getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
+            carMileageDetail.text = getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
+            carFuelDetail.text = getString(R.string.fuel_type_detail_string, car.fuelType)
+            carProductionDetail.text = getString(R.string.year_detail_string, car.yearOfProduction.toString())
 
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)

@@ -101,23 +101,21 @@
             tools:text="ALTRO" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/car_power_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:layout_marginTop="15dp"
-            android:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_title" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/car_mileage_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintStart_toStartOf="@+id/car_power_detail"
+            app:layout_constraintTop_toBottomOf="@+id/car_power_detail" />
 
         <TextView
             android:id="@+id/textView6"
@@ -126,7 +124,7 @@
             android:layout_marginEnd="6dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView4" />
+            app:layout_constraintTop_toTopOf="@+id/car_power_detail" />
 
         <TextView
             android:id="@+id/textView7"
@@ -134,25 +132,23 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
+            app:layout_constraintTop_toTopOf="@+id/car_mileage_detail" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/car_production_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="@+id/car_fuel_detail"
+            app:layout_constraintTop_toBottomOf="@+id/car_fuel_detail" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/car_fuel_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="TextView"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintStart_toStartOf="@+id/car_mileage_detail"
+            app:layout_constraintTop_toBottomOf="@+id/car_mileage_detail" />
 
         <View
             android:id="@+id/divider"
@@ -168,7 +164,7 @@
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:background="?attr/dividerHorizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintBottom_toBottomOf="@+id/car_production_detail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -179,7 +175,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintTop_toTopOf="@+id/car_fuel_detail" />
 
         <TextView
             android:id="@+id/textView11"
@@ -187,7 +183,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="@+id/textView8" />
+            app:layout_constraintTop_toTopOf="@+id/car_production_detail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
