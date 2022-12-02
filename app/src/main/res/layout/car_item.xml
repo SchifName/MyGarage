@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:text="@{car.brand}"
+                android:textAllCaps="true"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/car_image"
@@ -59,9 +60,10 @@
 
             <TextView
                 android:id="@+id/car_model"
-                android:layout_width="37dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:textSize="15sp"
                 android:text="@{car.model}"
                 app:layout_constraintStart_toStartOf="@id/car_brand"
                 app:layout_constraintTop_toBottomOf="@id/car_brand"
@@ -86,7 +88,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{}"
                 android:textSize="@dimen/card_item_text_size"
                 app:layout_constraintStart_toStartOf="@id/car_image"
                 app:layout_constraintTop_toBottomOf="@id/car_image"

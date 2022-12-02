@@ -35,12 +35,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        try {
-            //homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
+        /*try {
+            homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
         } catch (e: java.lang.Exception)
         {
             Log.d("error1", e.toString())
-        }
+        }*/
 
         val adapter = HomeListAdapter(clickListener = { car ->
             val action = HomeFragmentDirections

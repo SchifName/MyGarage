@@ -11,10 +11,10 @@ import java.io.ByteArrayOutputStream
 class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
     private val _carList = MutableLiveData<List<CarInfo>>()
 
-    val playlist: LiveData<List<CarInfo>>
+    /*val playlist: LiveData<List<CarInfo>>
         get() = _carList
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData<Boolean>(false)*/
 
     /*val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
@@ -34,7 +34,7 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         price: Double,
         mileage: Double
     ): Boolean {
-        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power != 0 && power.toString().length <= 4 && price != 0.0 && mileage != 0.0 && mileage.toString().length < 6
+        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power > 0 && power < 9999 && price > 0.0 && mileage > 0.0 && mileage < 1000000
     }
 
     fun addCar(

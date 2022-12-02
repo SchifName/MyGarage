@@ -22,6 +22,7 @@ class HomeViewModel(private val CarDao: CarDao) : ViewModel() {
         compress(Bitmap.CompressFormat.JPEG, quality, stream)
         return stream.toByteArray()
     }
+
 }
 
 class HomeViewModelFactory(private val carDao: CarDao) : ViewModelProvider.Factory {
