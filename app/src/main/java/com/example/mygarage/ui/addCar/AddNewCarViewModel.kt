@@ -1,10 +1,13 @@
 package com.example.mygarage.ui.addCar
 
 import android.graphics.Bitmap
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.mygarage.model.CarInfo
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 
@@ -24,6 +27,10 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
     */
+
+    fun getCarById(id: Long): LiveData<Car> {
+        return carDao.getCarById(id).asLiveData()
+    }
 
     fun checkInputEditTextNewCar(
         brand: String,
@@ -63,6 +70,35 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         }
     }
 
+    fun modCar(
+        id: Long,
+        Brand: String,
+        Model: String,
+        YearOfProduction: Int,
+        Power: Int,
+        FuelType: String,
+        Price: Double,
+        Image: Bitmap?,
+        Mileage: Double
+    ) {
+        val car = Car(
+            id = id,
+            brand = Brand,
+            model = Model,
+            yearOfProduction = YearOfProduction,
+            power = Power,
+            fuelType = FuelType,
+            price = Price,
+            image = Image?.toByteArray(),
+            mileage = Mileage
+        )
+
+        Log.d("valid car", "errore in isValidCar ")
+
+        CoroutineScope(Dispatchers.IO).launch {
+            carDao.update(car)
+        }
+    }
 
     private fun Bitmap.toByteArray(quality: Int = 100): ByteArray {
         val stream = ByteArrayOutputStream()

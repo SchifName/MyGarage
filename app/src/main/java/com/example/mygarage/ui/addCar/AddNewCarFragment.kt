@@ -3,6 +3,8 @@ package com.example.mygarage.ui.addCar
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,7 +18,12 @@ import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.*
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.navigation.fragment.navArgs
+import com.example.mygarage.model.Car
+import com.example.mygarage.model.carMileageWithUnitString
+import com.example.mygarage.model.carPowerWithUnitString
+import com.example.mygarage.model.formatCurrency
 import com.example.mygarage.ui.carDetail.CarDetailFragmentArgs
 import java.util.*
 
@@ -26,6 +33,7 @@ class AddNewCarFragment : Fragment() {
     private val REQUEST_CODE = 100
 
     private val carAddArgs: AddNewCarFragmentArgs by navArgs()
+    private lateinit var car: Car
 
     private lateinit var viewModel: AddNewCarViewModel
 
@@ -51,12 +59,53 @@ class AddNewCarFragment : Fragment() {
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility = View.GONE
         binding.apply {
+            if(carAddArgs.carId2 != 0L)
+                bindModCar()
             buttonAddNewCar.setOnClickListener{
                 navBar.visibility = View.VISIBLE
-                addNewCar()
+                if(carAddArgs.carId2 == 0L)
+                    addNewCar()
+                else
+                {
+                    if (car.image != null)
+                        binding.buttonAddImage.tag = "is_not_null"
+                    modifyCar()
+                }
             }
             buttonAddImage.setOnClickListener{
                 openGallery()
+            }
+        }
+    }
+
+    private fun bindModCar() {
+        addNewCarViewModel.getCarById(carAddArgs.carId2).observe(this.viewLifecycleOwner) { carSelected ->
+            car = carSelected
+            bindCar(car)
+        }
+    }
+
+    private fun bindCar(car: Car) {
+        binding.apply {
+            carBrandAddText.setText(car.brand)
+            carYearAddText.setText(car.yearOfProduction.toString())
+            carModelAddText.setText(car.model)
+            carFuelTypeAddText.setText(car.fuelType)
+            carPowerAddText.setText(car.power.toString())
+            carPriceAddText.setText(car.price.toString())
+            carMileageAddText.setText(car.mileage.toString())
+            if (car.image != null) {
+                val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
+                binding.buttonAddImage.setImageBitmap(
+                    Bitmap.createScaledBitmap(
+                        bmp,
+                        1920,
+                        1080,
+                        false
+                    )
+                )
+            } else {
+                binding.buttonAddImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
             }
         }
     }
@@ -93,7 +142,7 @@ class AddNewCarFragment : Fragment() {
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
-            Log.d("error", "errore in isValidCar "+e)
+            Log.d("valid car", "errore in isValidCar "+e)
             false
         }
     }
@@ -103,6 +152,28 @@ class AddNewCarFragment : Fragment() {
             image
         } else {
             null
+        }
+    }
+
+    private fun modifyCar(){
+        if (isValidCar()) {
+            Log.d("valid car", "errore in isValidCar ")
+            addNewCarViewModel.modCar(
+                id =carAddArgs.carId2,
+                Brand = binding.carBrandAddText.text.toString(),
+                YearOfProduction = binding.carYearAddText.text.toString().toInt(),
+                Model = binding.carModelAddText.text.toString(),
+                FuelType = binding.carFuelTypeAddText.text.toString(),
+                Power = binding.carPowerAddText.text.toString().toInt(),
+                Price = binding.carPriceAddText.text.toString().toDouble(),
+                Mileage = binding.carMileageAddText.text.toString().toDouble(),
+                Image = checkIfInsertIsNull(createBitmapFromView(binding.buttonAddImage))
+            )
+            val action = AddNewCarFragmentDirections.
+            actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
+            findNavController().navigate(action)
+        } else {
+            Log.d("error", "errore nella validità")
         }
     }
 
