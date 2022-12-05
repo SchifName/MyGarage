@@ -11,8 +11,3 @@ data class CarInfo(
     @SerializedName("DOOR") val door: String,
     @SerializedName("SEATS") val seats: String,
 )
-
-/*data class CarLogo(
-    @SerializedName("name") val name: String,
-    @SerializedName("logo") val logo: String,
-)*/

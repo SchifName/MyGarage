@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
@@ -16,6 +17,7 @@ import com.example.mygarage.model.Car
 import com.example.mygarage.model.carMileageWithUnitString
 import com.example.mygarage.model.carPowerWithUnitString
 import com.example.mygarage.model.formatCurrency
+import com.example.mygarage.ui.home.HomeFragmentDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarDetailFragment : Fragment() {
@@ -58,6 +60,17 @@ class CarDetailFragment : Fragment() {
                 bindCar(car)
             }
         }
+        binding.deleteFab.setOnClickListener {
+            //TODO ADD A MESSAGE FOR THE CHOICE OF DELETE
+            deleteCar(id)
+            val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
+            this.findNavController().navigate(action)
+        }
+
+        binding.modifyFab.setOnClickListener{
+            val action = CarDetailFragmentDirections.actionCarDetailFragmentToAddNewCarFragment(id)
+            this.findNavController().navigate(action)
+        }
     }
 
     private fun bindCar(car: Car) {
@@ -84,6 +97,10 @@ class CarDetailFragment : Fragment() {
                 binding.detailCarImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
             }
         }
+    }
+
+    private fun deleteCar(id: Long){
+        detailCarViewModel.deleteCarById(id)
     }
 
     override fun onDestroyView() {

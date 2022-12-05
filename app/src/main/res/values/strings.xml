@@ -30,5 +30,7 @@
     <string name="other_detail">Other</string>
     <string name="card_detail_name">YOUR CAR</string>
     <string name="title_new_car">ADD</string>
+    <string name="add_image">ADD IMAGE</string>
     <string name="mileage_detail_string">Mileage: %s</string>
+    <string name="delete_car_content_description">Delete car</string>
 </resources>

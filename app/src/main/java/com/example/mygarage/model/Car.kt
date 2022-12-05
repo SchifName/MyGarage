@@ -19,11 +19,6 @@ data class Car(
     @ColumnInfo(name="year_production") val yearOfProduction: Int,
 )
 
-fun PriceWithCurrency(price: Double): String{
-    val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-    return format.format(price)
-}
-
 fun carPowerWithUnitString(kw: Int): String {
     return "$kw kW"
 }

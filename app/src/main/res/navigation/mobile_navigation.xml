@@ -38,6 +38,13 @@
         <action
             android:id="@+id/action_addNewCarFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <argument
+            android:name="carId2"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_addNewCarFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/carDetailFragment"
@@ -51,5 +58,8 @@
             android:name="carId"
             android:defaultValue="0L"
             app:argType="long" />
+        <action
+            android:id="@+id/action_carDetailFragment_to_addNewCarFragment"
+            app:destination="@id/addNewCarFragment"/>
     </fragment>
 </navigation>
