@@ -8,16 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentCarDetailBinding
-import com.example.mygarage.model.Car
-import com.example.mygarage.model.carMileageWithUnitString
-import com.example.mygarage.model.carPowerWithUnitString
-import com.example.mygarage.model.formatCurrency
-import com.example.mygarage.ui.home.HomeFragmentDirections
+import com.example.mygarage.model.*
+import com.example.mygarage.ui.home.setAndGetUriByBrandParsingListOfLogoAndImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarDetailFragment : Fragment() {
@@ -64,6 +62,8 @@ class CarDetailFragment : Fragment() {
             //TODO ADD A MESSAGE FOR THE CHOICE OF DELETE
             deleteCar(id)
             val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
+            val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
+            navBar.visibility = View.VISIBLE
             this.findNavController().navigate(action)
         }
 
@@ -82,7 +82,14 @@ class CarDetailFragment : Fragment() {
             carMileageDetail.text = getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
             carFuelDetail.text = getString(R.string.fuel_type_detail_string, car.fuelType)
             carProductionDetail.text = getString(R.string.year_detail_string, car.yearOfProduction.toString())
-
+            val observer = Observer<List<CarLogo>> {
+                setAndGetUriByBrandParsingListOfLogoAndImageView(
+                    detailCarViewModel.logoDataApi.value,
+                    car.brand,
+                    binding.logoDetail
+                )
+            }
+            detailCarViewModel.logoDataApi.observe(viewLifecycleOwner, observer)
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
                 binding.detailCarImage.setImageBitmap(

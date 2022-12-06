@@ -10,6 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.databinding.FragmentHomeBinding
+import com.example.mygarage.model.CarLogo
+import androidx.lifecycle.Observer
+import com.example.mygarage.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +39,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
+        navBar.visibility = View.VISIBLE
         /*try {
             homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
         } catch (e: java.lang.Exception)
@@ -46,7 +52,13 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections
                 .actionNavigationHomeToCarDetailFragment(car.id)
             findNavController().navigate(action)
-        })
+        }, logoDataApi = homeViewModel.logoDataApi)
+
+        val observer = Observer<List<CarLogo>> {
+            binding.recyclerView.adapter = adapter
+        }
+
+        homeViewModel.logoDataApi.observe(viewLifecycleOwner, observer)
 
         homeViewModel.allCars.observe(this.viewLifecycleOwner) { carSelected ->
             carSelected.let {

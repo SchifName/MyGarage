@@ -3,9 +3,12 @@ package com.example.mygarage.ui.home
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.get
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,16 +16,18 @@ import com.example.mygarage.databinding.CarItemBinding
 import com.example.mygarage.model.*
 import com.example.mygarage.R
 import com.example.mygarage.model.Car
+import com.squareup.picasso.Picasso
 
 class HomeListAdapter(
     private val clickListener: (Car) -> Unit,
+    private val logoDataApi: LiveData<List<CarLogo>>
 ) : ListAdapter<Car, HomeListAdapter.HomeViewHolder>(DiffCallback) {
 
     class HomeViewHolder(
         private var context: Context,
         private var binding: CarItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(car: Car, clickListener: (Car) -> Unit) {
+        fun bind(car: Car, clickListener: (Car) -> Unit, logoDataApi: LiveData<List<CarLogo>>) {
             binding.car = car
             binding.carFuelType.text = context.getString(R.string.fuel_type_detail_string, car.fuelType)
             binding.carPrice.text = context.getString(R.string.price_detail_string, formatCurrency(car.price))
@@ -32,6 +37,11 @@ class HomeListAdapter(
             binding.extendButtonCarItem.setOnClickListener {
                 clickListener(car)
             }
+            setAndGetUriByBrandParsingListOfLogoAndImageView(
+                logoDataApi.value,
+                car.brand,
+                binding.carLogo
+            )
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
                 binding.carImage.setImageBitmap(
@@ -62,7 +72,7 @@ class HomeListAdapter(
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val car = getItem(position)
-        holder.bind(car, clickListener)
+        holder.bind(car, clickListener, logoDataApi)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -74,4 +84,18 @@ class HomeListAdapter(
         )
     }
 
+}
+
+fun setAndGetUriByBrandParsingListOfLogoAndImageView(
+    logoDataApi: List<CarLogo>?,
+    brand: String,
+    logo: ImageView
+) {
+    logoDataApi?.forEach {
+        if (it.name.equals(brand, ignoreCase = true)) {
+            Picasso.get().load(it.logo).into(logo)
+            return
+        }
+    }
+    logo.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
 }

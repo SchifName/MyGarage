@@ -37,9 +37,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_baseline_add_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_baseline_directions_car_filled_24">
 
             </ImageView>
 
@@ -63,8 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textSize="15sp"
                 android:text="@{car.model}"
+                android:textAllCaps="true"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/car_brand"
                 app:layout_constraintTop_toBottomOf="@id/car_brand"
                 tools:text="Modello">
@@ -87,9 +88,10 @@
                 android:id="@+id/car_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="4dp"
                 android:textSize="@dimen/card_item_text_size"
-                app:layout_constraintStart_toStartOf="@id/car_image"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/car_image"
                 tools:text="Potenza">
 
@@ -135,6 +137,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/car_year_production" />
+
+            <ImageView
+                android:id="@+id/car_logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/ic_baseline_directions_car_filled_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

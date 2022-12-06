@@ -34,6 +34,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginTop="3dp"
             android:text="@{car.brand}"
+            android:textAllCaps="true"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,15 +48,16 @@
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
             android:contentDescription="Car Logo"
-            android:src="@drawable/ic_baseline_directions_car_filled_24"
             app:layout_constraintBottom_toTopOf="@+id/detail_car_image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/brand_detail" />
+            app:layout_constraintTop_toTopOf="@+id/brand_detail"
+            tools:src="@drawable/ic_baseline_directions_car_filled_24"/>
 
         <TextView
             android:id="@+id/model_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="33sp"
             android:textStyle="bold"

@@ -157,7 +157,6 @@ class AddNewCarFragment : Fragment() {
 
     private fun modifyCar(){
         if (isValidCar()) {
-            Log.d("valid car", "errore in isValidCar ")
             addNewCarViewModel.modCar(
                 id =carAddArgs.carId2,
                 Brand = binding.carBrandAddText.text.toString(),

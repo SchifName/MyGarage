@@ -93,8 +93,6 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
             mileage = Mileage
         )
 
-        Log.d("valid car", "errore in isValidCar ")
-
         CoroutineScope(Dispatchers.IO).launch {
             carDao.update(car)
         }
