@@ -1,7 +1,6 @@
 package com.example.mygarage.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,12 +40,6 @@ class HomeFragment : Fragment() {
 
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility = View.VISIBLE
-        /*try {
-            homeViewModel.addCar("ALFA ROMEO", "CIAO", 2022, 8, "DIESEL", 0.00, null, 80.0)
-        } catch (e: java.lang.Exception)
-        {
-            Log.d("error1", e.toString())
-        }*/
 
         val adapter = HomeListAdapter(clickListener = { car ->
             val action = HomeFragmentDirections
