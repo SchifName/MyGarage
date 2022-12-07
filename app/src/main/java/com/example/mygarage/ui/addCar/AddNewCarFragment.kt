@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,13 +17,8 @@ import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.*
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.navigation.fragment.navArgs
 import com.example.mygarage.model.Car
-import com.example.mygarage.model.carMileageWithUnitString
-import com.example.mygarage.model.carPowerWithUnitString
-import com.example.mygarage.model.formatCurrency
-import com.example.mygarage.ui.carDetail.CarDetailFragmentArgs
 import java.util.*
 
 
@@ -68,11 +62,11 @@ class AddNewCarFragment : Fragment() {
                 else
                 {
                     if (car.image != null)
-                        binding.buttonAddImage.tag = "is_not_null"
+                        binding.imageViewAddImage.tag = "is_not_null"
                     modifyCar()
                 }
             }
-            buttonAddImage.setOnClickListener{
+            imageViewAddImage.setOnClickListener{
                 openGallery()
             }
         }
@@ -96,7 +90,7 @@ class AddNewCarFragment : Fragment() {
             carMileageAddText.setText(car.mileage.toString())
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
-                binding.buttonAddImage.setImageBitmap(
+                binding.imageViewAddImage.setImageBitmap(
                     Bitmap.createScaledBitmap(
                         bmp,
                         1920,
@@ -105,7 +99,7 @@ class AddNewCarFragment : Fragment() {
                     )
                 )
             } else {
-                binding.buttonAddImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
+                binding.imageViewAddImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
             }
         }
     }
@@ -120,7 +114,7 @@ class AddNewCarFragment : Fragment() {
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
-                Image = checkIfInsertIsNull(createBitmapFromView(binding.buttonAddImage))
+                Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
             val action = AddNewCarFragmentDirections.
             actionAddNewCarFragmentToNavigationHome()
@@ -148,7 +142,7 @@ class AddNewCarFragment : Fragment() {
     }
 
     private fun checkIfInsertIsNull(image: Bitmap): Bitmap? {
-        return if (binding.buttonAddImage.tag == "is_not_null") {
+        return if (binding.imageViewAddImage.tag == "is_not_null") {
             image
         } else {
             null
@@ -166,7 +160,7 @@ class AddNewCarFragment : Fragment() {
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
-                Image = checkIfInsertIsNull(createBitmapFromView(binding.buttonAddImage))
+                Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
             val action = AddNewCarFragmentDirections.
             actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
@@ -183,8 +177,8 @@ class AddNewCarFragment : Fragment() {
             val selectedImage = data?.data
             if (selectedImage != null) {
                 // handle chosen image
-                binding.buttonAddImage.setImageURI(data.data)
-                binding.buttonAddImage.tag = "is_not_null"
+                binding.imageViewAddImage.setImageURI(data.data)
+                binding.imageViewAddImage.tag = "is_not_null"
             }
         }
     }
