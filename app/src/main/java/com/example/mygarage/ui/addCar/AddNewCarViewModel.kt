@@ -12,21 +12,6 @@ import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 
 class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
-    private val _carList = MutableLiveData<List<CarInfo>>()
-
-    /*val playlist: LiveData<List<CarInfo>>
-        get() = _carList
-
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)*/
-
-    /*val eventNetworkError: LiveData<Boolean>
-        get() = _eventNetworkError
-
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
-
-    val isNetworkErrorShown: LiveData<Boolean>
-        get() = _isNetworkErrorShown
-    */
 
     fun getCarById(id: Long): LiveData<Car> {
         return carDao.getCarById(id).asLiveData()

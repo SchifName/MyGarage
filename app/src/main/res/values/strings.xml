@@ -24,9 +24,9 @@
     <string name="search_car">SEARCH</string>
     <string name="fuel_type_detail_string">Fuel type: %s</string>
     <string name="year_detail_string">Year of production: %s</string>
-    <string name="price_detail_string">Price: %s</string>
+    <string name="price_detail_string">PRICE: %s</string>
     <string name="power_detail_string">Engine power: %s</string>
-    <string name="detail">Detail</string>
+    <string name="detail">CAR INFO</string>
     <string name="other_detail">Other</string>
     <string name="card_detail_name">YOUR CAR</string>
     <string name="title_new_car">ADD</string>

@@ -165,7 +165,7 @@
             android:contentDescription="@string/add_new_car"
             android:focusable="true"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_baseline_directions_car_filled_24"
+            android:src="@drawable/ic_baseline_image_search_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

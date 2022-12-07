@@ -93,12 +93,7 @@ class CarDetailFragment : Fragment() {
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
                 binding.detailCarImage.setImageBitmap(
-                    Bitmap.createScaledBitmap(
-                        bmp,
-                        1920,
-                        1080,
-                        false
-                    )
+                    bmp
                 )
             } else {
                 binding.detailCarImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)

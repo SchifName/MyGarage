@@ -53,30 +53,30 @@ class AddNewCarFragment : Fragment() {
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility = View.GONE
         binding.apply {
-            if(carAddArgs.carId2 != 0L)
+            if (carAddArgs.carId2 != 0L)
                 bindModCar()
-            buttonAddNewCar.setOnClickListener{
+            buttonAddNewCar.setOnClickListener {
                 navBar.visibility = View.VISIBLE
-                if(carAddArgs.carId2 == 0L)
+                if (carAddArgs.carId2 == 0L)
                     addNewCar()
-                else
-                {
+                else {
                     if (car.image != null)
                         binding.imageViewAddImage.tag = "is_not_null"
                     modifyCar()
                 }
             }
-            imageViewAddImage.setOnClickListener{
+            imageViewAddImage.setOnClickListener {
                 openGallery()
             }
         }
     }
 
     private fun bindModCar() {
-        addNewCarViewModel.getCarById(carAddArgs.carId2).observe(this.viewLifecycleOwner) { carSelected ->
-            car = carSelected
-            bindCar(car)
-        }
+        addNewCarViewModel.getCarById(carAddArgs.carId2)
+            .observe(this.viewLifecycleOwner) { carSelected ->
+                car = carSelected
+                bindCar(car)
+            }
     }
 
     private fun bindCar(car: Car) {
@@ -91,12 +91,7 @@ class AddNewCarFragment : Fragment() {
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
                 binding.imageViewAddImage.setImageBitmap(
-                    Bitmap.createScaledBitmap(
-                        bmp,
-                        1920,
-                        1080,
-                        false
-                    )
+                    bmp
                 )
             } else {
                 binding.imageViewAddImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
@@ -116,8 +111,7 @@ class AddNewCarFragment : Fragment() {
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
-            val action = AddNewCarFragmentDirections.
-            actionAddNewCarFragmentToNavigationHome()
+            val action = AddNewCarFragmentDirections.actionAddNewCarFragmentToNavigationHome()
             findNavController().navigate(action)
         } else {
             Log.d("error", "errore nella validità")
@@ -136,7 +130,7 @@ class AddNewCarFragment : Fragment() {
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
-            Log.d("valid car", "errore in isValidCar "+e)
+            Log.d("valid car", "errore in isValidCar " + e)
             false
         }
     }
@@ -149,10 +143,10 @@ class AddNewCarFragment : Fragment() {
         }
     }
 
-    private fun modifyCar(){
+    private fun modifyCar() {
         if (isValidCar()) {
             addNewCarViewModel.modCar(
-                id =carAddArgs.carId2,
+                id = carAddArgs.carId2,
                 Brand = binding.carBrandAddText.text.toString(),
                 YearOfProduction = binding.carYearAddText.text.toString().toInt(),
                 Model = binding.carModelAddText.text.toString(),
@@ -162,8 +156,8 @@ class AddNewCarFragment : Fragment() {
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
-            val action = AddNewCarFragmentDirections.
-            actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
+            val action =
+                AddNewCarFragmentDirections.actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
             findNavController().navigate(action)
         } else {
             Log.d("error", "errore nella validità")

@@ -29,12 +29,12 @@ class HomeListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(car: Car, clickListener: (Car) -> Unit, logoDataApi: LiveData<List<CarLogo>>) {
             binding.car = car
-            binding.carFuelType.text = context.getString(R.string.fuel_type_detail_string, car.fuelType)
+            binding.carYearProduction.text = context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
+            /*binding.carFuelType.text = context.getString(R.string.fuel_type_detail_string, car.fuelType)
             binding.carPrice.text = context.getString(R.string.price_detail_string, formatCurrency(car.price))
             binding.carPower.text = context.getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
-            binding.carYearProduction.text = context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
-            binding.carMileage.text = context.getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
-            binding.extendButtonCarItem.setOnClickListener {
+            binding.carMileage.text = context.getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))*/
+            binding.card.setOnClickListener {
                 clickListener(car)
             }
             setAndGetUriByBrandParsingListOfLogoAndImageView(
@@ -45,12 +45,7 @@ class HomeListAdapter(
             if (car.image != null) {
                 val bmp = BitmapFactory.decodeByteArray(car.image, 0, car.image.size)
                 binding.carImage.setImageBitmap(
-                    Bitmap.createScaledBitmap(
-                        bmp,
-                        1920,
-                        1080,
-                        false
-                    )
+                    bmp
                 )
             } else {
                 binding.carImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
