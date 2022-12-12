@@ -158,14 +158,16 @@
 
         <ImageView
             android:id="@+id/image_view_add_image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="290dp"
+            android:layout_height="290dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:clickable="true"
             android:contentDescription="@string/add_new_car"
             android:focusable="true"
             android:scaleType="fitXY"
             android:src="@drawable/ic_baseline_image_search_24"
+            app:layout_constraintBottom_toTopOf="@+id/button_add_new_car"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/car_mileage_add_label" />
@@ -173,14 +175,13 @@
         <Button
             android:id="@+id/button_add_new_car"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:layout_marginTop="50dp"
             android:text="@string/add_new_car"
-            android:textSize="34sp"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_add_image"></Button>
+            app:layout_constraintStart_toStartOf="parent"></Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
