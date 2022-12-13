@@ -33,4 +33,8 @@
     <string name="add_image">ADD IMAGE</string>
     <string name="mileage_detail_string">Mileage: %s</string>
     <string name="delete_car_content_description">Delete car</string>
+
+    <!-- NOTIFICATION STRINGS -->
+    <string name="service_car_expired_text">Your car service for %s has expired</string>
+    <string name="service_car_context_text">Please do a checkup when possible for the car %s model %s</string>
 </resources>

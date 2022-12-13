@@ -19,7 +19,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.widget.*
 import androidx.navigation.fragment.navArgs
 import com.example.mygarage.model.Car
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 class AddNewCarFragment : Fragment() {
@@ -39,6 +42,10 @@ class AddNewCarFragment : Fragment() {
 
     private var _binding: FragmentAddNewCarBinding? = null
     private val binding get() = _binding!!
+
+    private val NotificationviewModel: NotificationManagerViewModel by viewModels {
+        NotificationManagerViewModelFactory(requireActivity().application)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -155,6 +162,17 @@ class AddNewCarFragment : Fragment() {
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
+            )
+            if (binding.carMileageAddText.text.toString().toDouble() >= 100000) NotificationviewModel.scheduleReminder(
+                5,
+                TimeUnit.SECONDS,
+                getString(
+                    R.string.service_car_expired_text, binding.carBrandAddText.text.toString()
+                ),
+                getString(R.string.service_car_context_text, binding.carBrandAddText.text.toString(), binding.carModelAddText.text.toString()),
+                carAddArgs.carId2,
+                binding.carBrandAddText.text.toString(),
+                binding.carModelAddText.text.toString()
             )
             val action =
                 AddNewCarFragmentDirections.actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
