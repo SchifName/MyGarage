@@ -1,5 +1,6 @@
 package com.example.mygarage.ui.carDetail
 
+import android.app.AlertDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -59,12 +60,31 @@ class CarDetailFragment : Fragment() {
             }
         }
         binding.deleteFab.setOnClickListener {
-            //TODO ADD A MESSAGE FOR THE CHOICE OF DELETE
-            deleteCar(id)
-            val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
-            val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
-            navBar.visibility = View.VISIBLE
-            this.findNavController().navigate(action)
+            val builder = AlertDialog.Builder(requireContext())
+            //set title
+            builder.setTitle(getString(R.string.delete_dialog_title))
+            //set message
+            builder.setMessage(getString(R.string.delete_dialog_message))
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+            //positive action
+            builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
+                deleteCar(id)
+                val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
+                val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
+                navBar.visibility = View.VISIBLE
+                this.findNavController().navigate(action)
+            }
+
+            //negative action
+            builder.setNegativeButton(getString(R.string.delete_dialog_negative_button)) { _, _ ->
+
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            //other dialog properties
+            alertDialog.setCancelable(false)
+            alertDialog.show()
         }
 
         binding.modifyFab.setOnClickListener{
