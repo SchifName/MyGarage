@@ -1,13 +1,12 @@
 package com.example.mygarage.ui.carDetail
 
 import android.app.AlertDialog
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -87,7 +86,7 @@ class CarDetailFragment : Fragment() {
             alertDialog.show()
         }
 
-        binding.modifyFab.setOnClickListener{
+        binding.modifyFab.setOnClickListener {
             val action = CarDetailFragmentDirections.actionCarDetailFragmentToAddNewCarFragment(id)
             this.findNavController().navigate(action)
         }
@@ -98,10 +97,13 @@ class CarDetailFragment : Fragment() {
             brandDetail.text = car.brand
             modelDetail.text = car.model
             priceTitle.text = getString(R.string.price_detail_string, formatCurrency(car.price))
-            carPowerDetail.text = getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
-            carMileageDetail.text = getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
+            carPowerDetail.text =
+                getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
+            carMileageDetail.text =
+                getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))
             carFuelDetail.text = getString(R.string.fuel_type_detail_string, car.fuelType)
-            carProductionDetail.text = getString(R.string.year_detail_string, car.yearOfProduction.toString())
+            carProductionDetail.text =
+                getString(R.string.year_detail_string, car.yearOfProduction.toString())
             val observer = Observer<List<CarLogo>> {
                 setAndGetUriByBrandParsingListOfLogoAndImageView(
                     detailCarViewModel.logoDataApi.value,
@@ -121,7 +123,7 @@ class CarDetailFragment : Fragment() {
         }
     }
 
-    private fun deleteCar(id: Long){
+    private fun deleteCar(id: Long) {
         detailCarViewModel.deleteCarById(id)
     }
 

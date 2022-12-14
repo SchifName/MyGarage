@@ -1,7 +1,7 @@
-package com.example.mygarage.dataNotification
+package com.example.mygarage.notificationManager.dataNotification
 
 import androidx.room.*
-import com.example.mygarage.modelNotification.Notification
+import com.example.mygarage.notificationManager.modelNotification.Notification
 import kotlinx.coroutines.flow.Flow
 
 @Dao

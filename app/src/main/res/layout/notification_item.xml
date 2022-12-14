@@ -7,7 +7,7 @@
     <data>
         <variable
             name="notification"
-            type="com.example.mygarage.modelNotification.Notification" />
+            type="com.example.mygarage.notificationManager.modelNotification.Notification" />
     </data>
 
 

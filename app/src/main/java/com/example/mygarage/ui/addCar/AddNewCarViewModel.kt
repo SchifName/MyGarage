@@ -1,9 +1,7 @@
 package com.example.mygarage.ui.addCar
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.*
-import com.example.mygarage.model.CarInfo
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.mygarage.modelNotification
+package com.example.mygarage.notificationManager.modelNotification
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -11,4 +11,4 @@ data class Notification(
     @ColumnInfo val content: String,
     @ColumnInfo val brand: String,
     @ColumnInfo val model: String
-    )
+)

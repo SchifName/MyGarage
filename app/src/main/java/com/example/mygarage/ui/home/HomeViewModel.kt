@@ -1,14 +1,11 @@
 package com.example.mygarage.ui.home
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
 import com.example.mygarage.model.CarLogo
 import com.example.mygarage.network.MyCarApiLogo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 

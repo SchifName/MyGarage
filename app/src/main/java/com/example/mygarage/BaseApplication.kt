@@ -2,7 +2,7 @@ package com.example.mygarage
 
 import android.app.Application
 import com.example.mygarage.data.CarDatabase
-import com.example.mygarage.dataNotification.NotificationDatabase
+import com.example.mygarage.notificationManager.dataNotification.NotificationDatabase
 
 class BaseApplication : Application() {
     val database: CarDatabase by lazy { CarDatabase.getDatabase(this) }

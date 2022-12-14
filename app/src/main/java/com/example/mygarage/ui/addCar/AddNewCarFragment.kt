@@ -6,21 +6,21 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentAddNewCarBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.widget.*
-import androidx.navigation.fragment.navArgs
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 import java.util.concurrent.TimeUnit
 

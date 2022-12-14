@@ -1,21 +1,18 @@
 package com.example.mygarage.ui.home
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.get
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mygarage.databinding.CarItemBinding
-import com.example.mygarage.model.*
 import com.example.mygarage.R
+import com.example.mygarage.databinding.CarItemBinding
 import com.example.mygarage.model.Car
+import com.example.mygarage.model.CarLogo
 import com.squareup.picasso.Picasso
 
 class HomeListAdapter(
@@ -29,7 +26,8 @@ class HomeListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(car: Car, clickListener: (Car) -> Unit, logoDataApi: LiveData<List<CarLogo>>) {
             binding.car = car
-            binding.carYearProduction.text = context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
+            binding.carYearProduction.text =
+                context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
             /*binding.carFuelType.text = context.getString(R.string.fuel_type_detail_string, car.fuelType)
             binding.carPrice.text = context.getString(R.string.price_detail_string, formatCurrency(car.price))
             binding.carPower.text = context.getString(R.string.power_detail_string, carPowerWithUnitString(car.power))

@@ -7,17 +7,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mygarage.databinding.NotificationItemBinding
-import com.example.mygarage.model.Car
-import com.example.mygarage.modelNotification.Notification
+import com.example.mygarage.notificationManager.modelNotification.Notification
 
-class NotificationListAdapter()
-    : ListAdapter<Notification, NotificationListAdapter.NotificationViewHolder>(DiffCallback){
+class NotificationListAdapter() :
+    ListAdapter<Notification, NotificationListAdapter.NotificationViewHolder>(DiffCallback) {
 
     class NotificationViewHolder(
         private var context: Context,
         private var binding: NotificationItemBinding,
-    ) : RecyclerView.ViewHolder(binding.root){
-        fun bind(notification: Notification){
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(notification: Notification) {
             binding.notification = notification
             binding.executePendingBindings()
         }

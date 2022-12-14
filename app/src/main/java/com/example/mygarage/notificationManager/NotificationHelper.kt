@@ -17,24 +17,32 @@ class NotificationHelper(val context: Context) {
     private val CHANNEL_ID = "reminder_channel_id"
     private val NOTIFICATION_ID = 1
 
-    private fun createNotificationChannel(){
+    private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT ).apply {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_ID,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
                 description = "Reminder Channel Description"
             }
-            val notificationManager =  context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
 
-    fun createNotification(title: String, message: String){
+    fun createNotification(title: String, message: String) {
         createNotificationChannel()
-        val intent = Intent(context, MainActivity:: class.java).apply{
+        val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, FLAG_MUTABLE)
         //TODO: change the icon
-        val icon = BitmapFactory.decodeResource(context.resources, R.drawable.ic_baseline_directions_car_filled_24)
+        val icon = BitmapFactory.decodeResource(
+            context.resources,
+            R.drawable.ic_baseline_directions_car_filled_24
+        )
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             //TODO : change the smaller icon
             .setSmallIcon(R.drawable.ic_baseline_directions_car_filled_24)

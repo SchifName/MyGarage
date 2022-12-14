@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.mygarage.BaseApplication
+import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentHomeBinding
 import com.example.mygarage.model.CarLogo
-import androidx.lifecycle.Observer
-import com.example.mygarage.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : Fragment() {
@@ -63,8 +63,8 @@ class HomeFragment : Fragment() {
             recyclerView.adapter = adapter
         }
         binding.fab.setOnClickListener {
-                val action = HomeFragmentDirections.actionNavigationHomeToAddNewCarFragment()
-                this.findNavController().navigate(action)
+            val action = HomeFragmentDirections.actionNavigationHomeToAddNewCarFragment()
+            this.findNavController().navigate(action)
         }
     }
 
