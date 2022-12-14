@@ -3,14 +3,18 @@ package com.example.mygarage.notificationManager.viewModelNotificationManager
 
 import android.app.Application
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.work.*
+import com.example.mygarage.dataNotification.NotificationDao
+import com.example.mygarage.modelNotification.Notification
 import com.example.mygarage.notificationManager.ReminderWorker
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 
-class NotificationManagerViewModel(val application: Application) : ViewModel() {
+class NotificationManagerViewModel(val application: Application, private  val notificationDao: NotificationDao) : ViewModel() {
+    val allNotification: LiveData<List<Notification>> = notificationDao.getNotifications().asLiveData()
+
     internal fun scheduleReminder(
         duration: Long,
         unit: TimeUnit,
@@ -37,15 +41,27 @@ class NotificationManagerViewModel(val application: Application) : ViewModel() {
         WorkManager
             .getInstance(application)
             .enqueueUniqueWork(carId.toString(), ExistingWorkPolicy.REPLACE, carRequest)
-        Toast.makeText(application, title, Toast.LENGTH_SHORT).show()
+
+        //Adding notification to the database
+        val notification = Notification(title = title, content = content, brand = carBrand, model = carModel)
+        viewModelScope.launch {
+            notificationDao.insert(notification)
+        }
+    }
+
+    fun deleteNotification(notification: Notification) {
+        viewModelScope.launch {
+            notificationDao.delete(notification)
+        }
     }
 }
 
 
-class NotificationManagerViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
+class NotificationManagerViewModelFactory(private val application: Application, private val notificationDao: NotificationDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(NotificationManagerViewModel::class.java)) {
-            NotificationManagerViewModel(application) as T
+            @Suppress("UNCHECKED_CAST")
+            NotificationManagerViewModel(application, notificationDao) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

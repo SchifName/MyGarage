@@ -175,7 +175,7 @@
         <Button
             android:id="@+id/button_add_new_car"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="250dp"
             android:layout_marginHorizontal="48dp"
             android:text="@string/add_new_car"
             android:textSize="34sp"

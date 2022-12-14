@@ -43,8 +43,11 @@ class AddNewCarFragment : Fragment() {
     private var _binding: FragmentAddNewCarBinding? = null
     private val binding get() = _binding!!
 
-    private val NotificationviewModel: NotificationManagerViewModel by viewModels {
-        NotificationManagerViewModelFactory(requireActivity().application)
+    private val notificationViewModel: NotificationManagerViewModel by viewModels {
+        NotificationManagerViewModelFactory(
+            requireActivity().application,
+            (activity?.application as BaseApplication).notDatabase.NotificationDao()
+        )
     }
 
     override fun onCreateView(
@@ -159,8 +162,8 @@ class AddNewCarFragment : Fragment() {
             val model = binding.carModelAddText.text.toString()
 
             if (binding.carMileageAddText.text.toString().toDouble() >= 100000){
-                NotificationviewModel.scheduleReminder(
-                    3,
+                notificationViewModel.scheduleReminder(
+                    4,
                     TimeUnit.SECONDS,
                     getString(
                         R.string.service_car_expired_text, brand
