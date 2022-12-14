@@ -160,6 +160,7 @@ class AddNewCarFragment : Fragment() {
             val id = carAddArgs.carId2
             val brand = binding.carBrandAddText.text.toString()
             val model = binding.carModelAddText.text.toString()
+            val mileage = binding.carMileageAddText.text.toString()
 
             if (binding.carMileageAddText.text.toString().toDouble() >= 100000){
                 notificationViewModel.scheduleReminder(
@@ -171,7 +172,8 @@ class AddNewCarFragment : Fragment() {
                     getString(R.string.service_car_context_text, brand, model),
                     id,
                     brand,
-                    model
+                    model,
+                    mileage
                 )
             }
 
@@ -183,7 +185,7 @@ class AddNewCarFragment : Fragment() {
                 FuelType = binding.carFuelTypeAddText.text.toString(),
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
-                Mileage = binding.carMileageAddText.text.toString().toDouble(),
+                Mileage = mileage.toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
 

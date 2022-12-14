@@ -10,5 +10,6 @@ data class Notification(
     @ColumnInfo val title: String,
     @ColumnInfo val content: String,
     @ColumnInfo val brand: String,
-    @ColumnInfo val model: String
+    @ColumnInfo val model: String,
+    @ColumnInfo val mileage: String
 )

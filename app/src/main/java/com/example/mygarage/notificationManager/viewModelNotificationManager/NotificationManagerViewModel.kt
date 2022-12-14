@@ -26,6 +26,7 @@ class NotificationManagerViewModel(
         carId: Long,
         carBrand: String,
         carModel: String,
+        carMileage: String
     ) {
         val dataToWorker: Data =
             workDataOf(
@@ -47,7 +48,7 @@ class NotificationManagerViewModel(
 
         //Adding notification to the database
         val notification =
-            Notification(title = title, content = content, brand = carBrand, model = carModel)
+            Notification(title = title, content = content, brand = carBrand, model = carModel, mileage = carMileage)
         viewModelScope.launch {
             notificationDao.insert(notification)
         }
