@@ -2,6 +2,7 @@ package com.example.mygarage.notificationManager.viewModelNotificationManager
 
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.work.*
@@ -36,6 +37,7 @@ class NotificationManagerViewModel(val application: Application) : ViewModel() {
         WorkManager
             .getInstance(application)
             .enqueueUniqueWork(carId.toString(), ExistingWorkPolicy.REPLACE, carRequest)
+        Toast.makeText(application, title, Toast.LENGTH_SHORT).show()
     }
 }
 

@@ -152,28 +152,38 @@ class AddNewCarFragment : Fragment() {
 
     private fun modifyCar() {
         if (isValidCar()) {
+
+            //TODO: NOTIFICATION
+            val id = carAddArgs.carId2
+            val brand = binding.carBrandAddText.text.toString()
+            val model = binding.carModelAddText.text.toString()
+
+            if (binding.carMileageAddText.text.toString().toDouble() >= 100000){
+                NotificationviewModel.scheduleReminder(
+                    3,
+                    TimeUnit.SECONDS,
+                    getString(
+                        R.string.service_car_expired_text, brand
+                    ),
+                    getString(R.string.service_car_context_text, brand, model),
+                    id,
+                    brand,
+                    model
+                )
+            }
+
             addNewCarViewModel.modCar(
-                id = carAddArgs.carId2,
-                Brand = binding.carBrandAddText.text.toString(),
+                id = id,
+                Brand = brand,
                 YearOfProduction = binding.carYearAddText.text.toString().toInt(),
-                Model = binding.carModelAddText.text.toString(),
+                Model = model,
                 FuelType = binding.carFuelTypeAddText.text.toString(),
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
-            if (binding.carMileageAddText.text.toString().toDouble() >= 100000) NotificationviewModel.scheduleReminder(
-                5,
-                TimeUnit.SECONDS,
-                getString(
-                    R.string.service_car_expired_text, binding.carBrandAddText.text.toString()
-                ),
-                getString(R.string.service_car_context_text, binding.carBrandAddText.text.toString(), binding.carModelAddText.text.toString()),
-                carAddArgs.carId2,
-                binding.carBrandAddText.text.toString(),
-                binding.carModelAddText.text.toString()
-            )
+
             val action =
                 AddNewCarFragmentDirections.actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
             findNavController().navigate(action)
