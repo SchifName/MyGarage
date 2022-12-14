@@ -17,7 +17,7 @@ abstract class NotificationDatabase:RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     NotificationDatabase::class.java,
-                    "item_database"
+                    "notification_database"
                 ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 return instance
