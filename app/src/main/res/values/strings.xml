@@ -45,4 +45,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="swipe_to_delete">SWIPE TO DELETE</string>
+    <string name="brand_label_notification_item">BRAND</string>
+    <string name="model_label_notification_item">MODEL</string>
+    <string name="mileage_label_notification_item">MILEAGE</string>
 </resources>
