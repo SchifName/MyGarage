@@ -48,7 +48,7 @@ class NotificationManagerViewModel(
 
         //Adding notification to the database
         val notification =
-            Notification(title = title, content = content, brand = carBrand, model = carModel, mileage = carMileage)
+            Notification(carId = carId, title = title, content = content, brand = carBrand, model = carModel, mileage = carMileage)
         viewModelScope.launch {
             notificationDao.insert(notification)
         }
@@ -57,6 +57,12 @@ class NotificationManagerViewModel(
     fun deleteNotification(notification: Notification) {
         viewModelScope.launch {
             notificationDao.delete(notification)
+        }
+    }
+
+    fun deleteNotification(carId: Long) {
+        viewModelScope.launch {
+            notificationDao.deleteNotificationById(carId)
         }
     }
 }

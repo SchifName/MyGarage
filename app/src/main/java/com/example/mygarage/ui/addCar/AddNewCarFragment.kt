@@ -156,7 +156,6 @@ class AddNewCarFragment : Fragment() {
     private fun modifyCar() {
         if (isValidCar()) {
 
-            //TODO: NOTIFICATION
             val id = carAddArgs.carId2
             val brand = binding.carBrandAddText.text.toString()
             val model = binding.carModelAddText.text.toString()

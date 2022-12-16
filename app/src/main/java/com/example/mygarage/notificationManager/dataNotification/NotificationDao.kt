@@ -12,8 +12,8 @@ interface NotificationDao {
     @Query("SELECT * FROM Notification WHERE id = :id")
     fun getNotificationById(id : Long): Flow<Notification>
 
-    @Query("DELETE FROM NOTIFICATION WHERE id = :id")
-    suspend fun deleteNotificationById(id: Long)
+    @Query("DELETE FROM NOTIFICATION WHERE carId = :carId")
+    suspend fun deleteNotificationById(carId: Long)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(notification: Notification)

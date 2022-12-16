@@ -15,6 +15,8 @@ import com.example.mygarage.BaseApplication
 import com.example.mygarage.R
 import com.example.mygarage.databinding.FragmentCarDetailBinding
 import com.example.mygarage.model.*
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
 import com.example.mygarage.ui.home.setAndGetUriByBrandParsingListOfLogoAndImageView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +28,13 @@ class CarDetailFragment : Fragment() {
     private val detailCarViewModel: CarDetailViewModel by viewModels {
         CarDetailViewModelFactory(
             (activity?.application as BaseApplication).database.CarDao()
+        )
+    }
+
+    private val notificationViewModel: NotificationManagerViewModel by viewModels {
+        NotificationManagerViewModelFactory(
+            requireActivity().application,
+            (activity?.application as BaseApplication).notDatabase.NotificationDao()
         )
     }
 
@@ -125,6 +134,7 @@ class CarDetailFragment : Fragment() {
 
     private fun deleteCar(id: Long) {
         detailCarViewModel.deleteCarById(id)
+        notificationViewModel.deleteNotification(id)
     }
 
     override fun onDestroyView() {

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.mygarage.notificationManager.modelNotification.Notification
 
-@Database(entities = [Notification::class], version = 1, exportSchema = false)
+@Database(entities = [Notification::class], version = 2, exportSchema = false)
 abstract class NotificationDatabase:RoomDatabase() {
     abstract fun NotificationDao(): NotificationDao
     companion object{
