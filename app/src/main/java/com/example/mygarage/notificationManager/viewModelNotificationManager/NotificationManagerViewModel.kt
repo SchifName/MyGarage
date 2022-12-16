@@ -7,6 +7,7 @@ import androidx.work.*
 import com.example.mygarage.notificationManager.dataNotification.NotificationDao
 import com.example.mygarage.notificationManager.modelNotification.Notification
 import com.example.mygarage.notificationManager.ReminderWorker
+import com.example.mygarage.notificationManager.ReminderWorker.Companion.carId
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
@@ -60,9 +61,15 @@ class NotificationManagerViewModel(
         }
     }
 
-    fun deleteNotification(carId: Long) {
+    fun deleteNotificationByCarId(carId: Long) {
         viewModelScope.launch {
             notificationDao.deleteNotificationById(carId)
+        }
+    }
+
+    fun getNotificationById(id: Long){
+        viewModelScope.launch {
+            notificationDao.getNotificationById(id)
         }
     }
 }

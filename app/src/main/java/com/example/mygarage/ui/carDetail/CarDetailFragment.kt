@@ -134,7 +134,7 @@ class CarDetailFragment : Fragment() {
 
     private fun deleteCar(id: Long) {
         detailCarViewModel.deleteCarById(id)
-        notificationViewModel.deleteNotification(id)
+        notificationViewModel.deleteNotificationByCarId(id)
     }
 
     override fun onDestroyView() {

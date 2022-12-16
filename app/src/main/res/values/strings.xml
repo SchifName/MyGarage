@@ -36,7 +36,7 @@
 
     <!-- NOTIFICATION STRINGS -->
     <string name="service_car_expired_text">Your car service for %s has expired</string>
-    <string name="service_car_context_text">Please do a checkup when possible for the car %s model %s</string>
+    <string name="service_car_context_text">Please do a checkup when possible</string>
 
     <!-- DIALOG DELETE -->
     <string name="delete_dialog_title">Delete Car</string>
