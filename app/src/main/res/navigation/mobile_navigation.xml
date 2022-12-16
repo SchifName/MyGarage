@@ -20,12 +20,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.mygarage.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.mygarage.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"

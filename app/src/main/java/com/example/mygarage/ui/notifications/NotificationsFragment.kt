@@ -40,7 +40,7 @@ class NotificationsFragment : Fragment() {
         val adapter = NotificationListAdapter()
 
 
-        val NotificationSwipeGesture = object : NotificationSwipeGesture(activity?.applicationContext){
+        val notificationSwipeGesture = object : NotificationSwipeGesture(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val notification = notificationViewModel.allNotification.value?.get(viewHolder.absoluteAdapterPosition)
                 if (notification != null) {
@@ -49,7 +49,7 @@ class NotificationsFragment : Fragment() {
             }
         }
 
-        val touchHelper = ItemTouchHelper(NotificationSwipeGesture)
+        val touchHelper = ItemTouchHelper(notificationSwipeGesture)
         touchHelper.attachToRecyclerView(binding.recyclerView)
 
         notificationViewModel.allNotification.observe(this.viewLifecycleOwner) { notificationSelected ->
