@@ -63,7 +63,7 @@ class HomeFragment : Fragment() {
         binding.apply {
             recyclerView.adapter = adapter
         }
-        binding.fab.setOnClickListener {
+        binding.addFab.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToAddNewCarFragment()
             this.findNavController().navigate(action)
         }
