@@ -55,9 +55,6 @@ class CarDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val arg = arguments?.getLong("CarIdNotification")
-        val navBar: BottomNavigationView =
-            requireActivity().findViewById(R.id.nav_view)
-        navBar.visibility = View.GONE
         var id = carDetailArgs.carId
         if (arg != null && arg > 0)
             id = arg
@@ -79,8 +76,6 @@ class CarDetailFragment : Fragment() {
             builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
                 deleteCar(id)
                 val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
-                val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
-                navBar.visibility = View.VISIBLE
                 this.findNavController().navigate(action)
             }
 

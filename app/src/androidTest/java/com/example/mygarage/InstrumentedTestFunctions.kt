@@ -3,25 +3,25 @@ package com.example.mygarage
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.*
+import com.example.mygarage.model.Car
 
 fun go_to_home_fragment(){
     onView(withId(R.id.navigation_home))
-        .perform()
+        .perform(click())
 }
 
 fun go_to_notification_fragment(){
     onView(withId(R.id.navigation_notifications))
-        .perform()
+        .perform(click())
 }
 
 fun click_add_new_car_fab(){
     onView(withId(R.id.add_fab))
-        .perform()
+        .perform(click())
 }
 
 fun navigate_to_home_to_add_new_car(){
@@ -45,10 +45,26 @@ fun write_on_text_input(idTextInput: Int, string :String){
         .perform(typeText(string))
 }
 
+fun add_new_car_text_input(car: Car){
+    click_text_input_and_type(R.id.car_brand_add_text,car.brand)
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_year_add_text,car.yearOfProduction.toString())
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_model_add_text,car.model)
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_fuel_type_add_text,car.fuelType)
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_power_add_text,car.power.toString())
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_price_add_text,car.price.toString())
+    hide_keyboard()
+    click_text_input_and_type(R.id.car_mileage_add_text,car.mileage.toString())
+}
+
 fun click_text_input_and_type(idTextInput: Int, string: String){
-    Thread.sleep(3000)
+    Thread.sleep(500)
     click_on_id(idTextInput)
-    Thread.sleep(2000)
+    Thread.sleep(500)
     write_on_text_input(idTextInput, string)
 }
 

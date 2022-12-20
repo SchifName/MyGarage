@@ -1,5 +1,6 @@
 package com.example.mygarage.ui.addCar
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -20,7 +21,6 @@ import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -60,13 +60,10 @@ class AddNewCarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
-        navBar.visibility = View.GONE
         binding.apply {
             if (carAddArgs.carId2 != 0L)
                 bindModCar()
             buttonAddNewCar.setOnClickListener {
-                navBar.visibility = View.VISIBLE
                 if (carAddArgs.carId2 == 0L)
                     addNewCar()
                 else {
@@ -153,6 +150,7 @@ class AddNewCarFragment : Fragment() {
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun modifyCar() {
         if (isValidCar()) {
 
