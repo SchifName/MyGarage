@@ -34,11 +34,6 @@ will be send a notification that alerts that u car service his expired.
 <img src="https://user-images.githubusercontent.com/110109311/208915626-79ea23b3-d6bb-453f-8a05-6e05accf015e.jpg" width="400" height="800" />
 
 # Notification fragment
-Here u can see every notification that is ever arrived to you.
+Here u can see every notification that is ever arrived to you. U can also use this swipe gesture to delete a notification.
 
-<img src="https://user-images.githubusercontent.com/110109311/208917261-1964c4d7-3bc9-4d12-8366-017e3d1a45d7.jpg" width="400" height="800" />   <img src="https://user-images.githubusercontent.com/110109311/208915762-76b6171a-d27f-4964-b178-7729dacf4a33.jpg" width="400" height="800" />
-
-# Swipe gesture for delete a notification
-U can use this swipe gesture to delete a notification.
-
-
+<img src="https://user-images.githubusercontent.com/110109311/208917261-1964c4d7-3bc9-4d12-8366-017e3d1a45d7.jpg" width="400" height="800" />         <img src="https://user-images.githubusercontent.com/110109311/208915762-76b6171a-d27f-4964-b178-7729dacf4a33.jpg" width="400" height="800" />
