@@ -49,4 +49,12 @@
     <string name="model_label_notification_item">MODEL</string>
     <string name="mileage_label_notification_item">MILEAGE</string>
     <string name="title_add_car">ADD CAR</string>
+    <string name="error_snackbar">Error not all fields are filled in correctly %s</string>
+    <string name="blank_brand">the brand cannot be empty</string>
+    <string name="error_year">the year field cannot be empty</string>
+    <string name="blank_model">the model field cannot be empty</string>
+    <string name="blank_fuel">the fuel field cannot be empty</string>
+    <string name="error_price">price cant be = 0</string>
+    <string name="error_power">The power can\'t be more than 3000</string>
+    <string name="error_km">The mileage field can\'t be 0 or less</string>
 </resources>

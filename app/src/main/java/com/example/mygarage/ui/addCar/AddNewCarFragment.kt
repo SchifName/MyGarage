@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.text.TextUtils.concat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,7 @@ import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -28,6 +30,8 @@ import java.util.concurrent.TimeUnit
 class AddNewCarFragment : Fragment() {
 
     private val REQUEST_CODE = 100
+
+    private val error = ""
 
     private val carAddArgs: AddNewCarFragmentArgs by navArgs()
     private lateinit var car: Car
@@ -125,6 +129,19 @@ class AddNewCarFragment : Fragment() {
         }
     }
 
+    private fun snackBarBlank(): Int {
+        return when (error.isBlank()) {
+            binding.carBrandAddText.text.toString().isBlank() -> R.string.blank_brand
+            binding.carYearAddText.text.toString().isBlank() -> R.string.error_year
+            binding.carModelAddText.text.toString().isBlank() -> R.string.blank_model
+            binding.carFuelTypeAddText.text.toString().isBlank() -> R.string.blank_fuel
+            binding.carPowerAddText.text.toString().isBlank() -> R.string.error_power
+            binding.carPriceAddText.text.toString().isBlank() -> R.string.error_price
+            binding.carMileageAddText.text.toString().isBlank() -> R.string.error_km
+            else -> R.string.error_snackbar
+        }
+    }
+
     private fun isValidCar(): Boolean {
         return try {
             addNewCarViewModel.checkInputEditTextNewCar(
@@ -137,6 +154,7 @@ class AddNewCarFragment : Fragment() {
                 binding.carMileageAddText.text.toString().toDouble()
             )
         } catch (e: Exception) {
+            view?.let { Snackbar.make(it, snackBarBlank(), Snackbar.LENGTH_SHORT).show() }
             Log.d("valid car", "errore in isValidCar " + e)
             false
         }
