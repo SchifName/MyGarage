@@ -19,11 +19,6 @@ data class Car(
     @ColumnInfo(name="year_production") val yearOfProduction: Int,
 )
 
-fun PriceWithCurrency(price: Double): String{
-    val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
-    return format.format(price)
-}
-
 fun carPowerWithUnitString(kw: Int): String {
     return "$kw kW"
 }
@@ -32,10 +27,8 @@ fun carMileageWithUnitString(mileage: Double): String {
     return "$mileage Km"
 }
 
-enum class fuelType{
-    Petrol,
-    Diesel,
-    Electric,
-    Gas,
-    Other
+fun formatCurrency(price:Double): String{
+    val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
+    return format.format(price)
 }
+

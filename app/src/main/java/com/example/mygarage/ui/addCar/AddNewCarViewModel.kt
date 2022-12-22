@@ -2,28 +2,18 @@ package com.example.mygarage.ui.addCar
 
 import android.graphics.Bitmap
 import androidx.lifecycle.*
-import com.example.mygarage.model.CarInfo
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 
 class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
-    private val _carList = MutableLiveData<List<CarInfo>>()
 
-    val playlist: LiveData<List<CarInfo>>
-        get() = _carList
-
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
-
-    /*val eventNetworkError: LiveData<Boolean>
-        get() = _eventNetworkError
-
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
-
-    val isNetworkErrorShown: LiveData<Boolean>
-        get() = _isNetworkErrorShown
-    */
+    fun getCarById(id: Long): LiveData<Car> {
+        return carDao.getCarById(id).asLiveData()
+    }
 
     fun checkInputEditTextNewCar(
         brand: String,
@@ -34,7 +24,7 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         price: Double,
         mileage: Double
     ): Boolean {
-        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power != 0 && power.toString().length <= 4 && price != 0.0 && mileage != 0.0 && mileage.toString().length < 10
+        return brand.isNotBlank() && year != 0 && model.isNotBlank() && fuelType.isNotBlank() && power > 0 && power < 9999 && price > 0.0 && mileage > 0.0 && mileage < 1000000
     }
 
     fun addCar(
@@ -63,16 +53,33 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         }
     }
 
-    /*fun refreshDataFromNetwork() = viewModelScope.launch {
-        try {
-            _carList.value = VehicleApi.retrofitService.getCarInfo()
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
+    fun modCar(
+        id: Long,
+        Brand: String,
+        Model: String,
+        YearOfProduction: Int,
+        Power: Int,
+        FuelType: String,
+        Price: Double,
+        Image: Bitmap?,
+        Mileage: Double
+    ) {
+        val car = Car(
+            id = id,
+            brand = Brand,
+            model = Model,
+            yearOfProduction = YearOfProduction,
+            power = Power,
+            fuelType = FuelType,
+            price = Price,
+            image = Image?.toByteArray(),
+            mileage = Mileage
+        )
 
-        } catch (networkError: IOException) {
-            _eventNetworkError.value = true
+        CoroutineScope(Dispatchers.IO).launch {
+            carDao.update(car)
         }
-    }*/
+    }
 
     private fun Bitmap.toByteArray(quality: Int = 100): ByteArray {
         val stream = ByteArrayOutputStream()

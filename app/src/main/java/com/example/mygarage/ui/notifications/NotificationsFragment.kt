@@ -4,17 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.example.mygarage.BaseApplication
 import com.example.mygarage.databinding.FragmentNotificationsBinding
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
+import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
 
 class NotificationsFragment : Fragment() {
-
     private var _binding: FragmentNotificationsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private val notificationViewModel: NotificationManagerViewModel by viewModels {
+        NotificationManagerViewModelFactory(
+            requireActivity().application,
+            (activity?.application as BaseApplication).notDatabase.NotificationDao()
+        )
+    }
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,17 +30,37 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = NotificationListAdapter()
+
+
+        val notificationSwipeGesture = object : NotificationSwipeGesture(){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val notification = notificationViewModel.allNotification.value?.get(viewHolder.absoluteAdapterPosition)
+                if (notification != null) {
+                    notificationViewModel.deleteNotification(notification)
+                }
+            }
         }
-        return root
+
+        val touchHelper = ItemTouchHelper(notificationSwipeGesture)
+        touchHelper.attachToRecyclerView(binding.recyclerView)
+
+        notificationViewModel.allNotification.observe(this.viewLifecycleOwner) { notificationSelected ->
+            notificationSelected.let {
+                adapter.submitList(it)
+            }
+        }
+
+        binding.apply {
+            recyclerView.adapter = adapter
+        }
     }
 
     override fun onDestroyView() {

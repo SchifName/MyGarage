@@ -4,64 +4,64 @@ import android.graphics.Bitmap
 import androidx.lifecycle.*
 import com.example.mygarage.data.CarDao
 import com.example.mygarage.model.Car
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.mygarage.model.CarLogo
+import com.example.mygarage.network.MyCarApiLogo
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
+
+enum class LogoApiStatus {
+    LOADING,
+    ERROR,
+    DONE
+}
 
 class HomeViewModel(private val CarDao: CarDao) : ViewModel() {
     val allCars: LiveData<List<Car>> = CarDao.getCars().asLiveData()
 
-    fun addCar(
-        Brand: String,
-        Model: String,
-        YearOfProduction: Int,
-        Power: Int,
-        FuelType: String,
-        Price: Double,
-        Image: Bitmap?,
-        Mileage: Double
-    ) {
-        val car = Car(
-            brand = Brand,
-            model = Model,
-            yearOfProduction = YearOfProduction,
-            power = Power,
-            fuelType = FuelType,
-            price = Price,
-            image = Image?.toByteArray(),
-            mileage = Mileage
-        )
+    /*private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
+    val eventNetworkError: LiveData<Boolean>
+        get() = _eventNetworkError
+
+    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+
+    val isNetworkErrorShown: LiveData<Boolean>
+        get() = _isNetworkErrorShown*/
+
+    // Status Logo Api
+    private val _statusLogApi = MutableLiveData<LogoApiStatus>()
+    val statusLogApi: LiveData<LogoApiStatus> = _statusLogApi
+
+    private val _logoDataApi = MutableLiveData<List<CarLogo>>()
+    val logoDataApi: LiveData<List<CarLogo>> = _logoDataApi
+
+    init {
+        getLogo()
+    }
+
+    /**
+     * Gets Logo information from the Vehicle API Retrofit service and updates the
+     * [_logoDataApi] [List] [LiveData].
+     */
+    private fun getLogo() {
         viewModelScope.launch {
-            CarDao.insert(car)
+            _statusLogApi.value = LogoApiStatus.LOADING
+            try {
+                _logoDataApi.value = MyCarApiLogo.retrofitService.getMyCarLogo()
+                _statusLogApi.value = LogoApiStatus.DONE
+            } catch (e: java.lang.Exception) {
+                _statusLogApi.value = LogoApiStatus.ERROR
+                _logoDataApi.value = listOf()
+            }
         }
-    }
-    fun updateCar(car: Car) {
-        val updatedCar = Car(
-            id = car.id,
-            brand = car.brand,
-            model = car.model,
-            yearOfProduction = car.yearOfProduction,
-            power = car.power,
-            fuelType = car.fuelType,
-            price = car.price,
-            mileage = car.mileage,
-            image = car.image,
-        )
-        updateCarDatabase(updatedCar)
     }
 
-    fun updateCarDatabase(car: Car) {
-        CoroutineScope(Dispatchers.IO).launch {
-            CarDao.update(car)
-        }
-    }
     private fun Bitmap.toByteArray(quality: Int = 100): ByteArray {
         val stream = ByteArrayOutputStream()
         compress(Bitmap.CompressFormat.JPEG, quality, stream)
         return stream.toByteArray()
     }
+
 }
 
 class HomeViewModelFactory(private val carDao: CarDao) : ViewModelProvider.Factory {

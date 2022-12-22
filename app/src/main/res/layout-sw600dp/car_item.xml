@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="car"
+            type="com.example.mygarage.model.Car" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_margin="6dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/car_item_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/card_margin"
+            android:layout_marginEnd="@dimen/card_margin">
+
+            <ImageView
+                android:id="@+id/car_image"
+                android:layout_width="270dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_baseline_directions_car_filled_24">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/car_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="@{car.brand}"
+                android:textAllCaps="true"
+                android:maxLength="10"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/car_image"
+                app:layout_constraintTop_toTopOf="@id/car_image"
+                tools:text="Marca">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/car_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{car.model}"
+                android:textAllCaps="true"
+                android:textSize="34sp"
+                app:layout_constraintStart_toStartOf="@id/car_brand"
+                app:layout_constraintTop_toBottomOf="@id/car_brand"
+                tools:text="Modello">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/car_year_production"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLength="10"
+                android:textSize="34sp"
+                app:layout_constraintStart_toStartOf="@+id/car_model"
+                app:layout_constraintTop_toBottomOf="@+id/car_model"
+                tools:text="2022"></TextView>
+
+            <ImageView
+                android:id="@+id/car_logo"
+                android:layout_width="140dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_baseline_directions_car_filled_24" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

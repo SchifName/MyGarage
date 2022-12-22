@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+    android:label="AUTO"
     app:startDestination="@+id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.mygarage.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_addNewCarFragment"
             app:destination="@id/addNewCarFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
     </fragment>
-
-    <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.example.mygarage.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -29,10 +27,37 @@
     <fragment
         android:id="@+id/addNewCarFragment"
         android:name="com.example.mygarage.ui.addCar.AddNewCarFragment"
-        android:label="fragment_add_new_car"
-        tools:layout="@layout/fragment_add_new_car" >
+        android:label="@string/title_add_car"
+        tools:layout="@layout/fragment_add_new_car">
         <action
             android:id="@+id/action_addNewCarFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <argument
+            android:name="carId2"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_addNewCarFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment"
+            app:popUpTo="@id/carDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/carDetailFragment"
+        android:name="com.example.mygarage.ui.carDetail.CarDetailFragment"
+        android:label="@string/card_detail_name"
+        tools:layout="@layout/fragment_car_detail">
+        <action
+            android:id="@+id/action_carDetailFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <argument
+            android:name="carId"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_carDetailFragment_to_addNewCarFragment"
+            app:destination="@id/addNewCarFragment"
+            app:popUpTo="@id/addNewCarFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

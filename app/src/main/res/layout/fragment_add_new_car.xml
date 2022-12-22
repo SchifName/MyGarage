@@ -1,180 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/constraint_layout_add_new_car"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addCar.AddNewCarFragment"
-    android:padding="10dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/new_car"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/car_brand_add_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_brand_add_label"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_add_new_car"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        android:layout_height="match_parent"
+        tools:context=".ui.addCar.AddNewCarFragment"
+        android:padding="10dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_brand_add_text"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/new_car"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/car_brand_add_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_brand_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:hint="@string/brand_add"
-            android:inputType="text"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_brand_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:hint="@string/brand_add"
+                android:inputType="text"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_year_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_brand_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_year_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_year_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/year_add"
-            android:focusable="false"
-            android:enabled="false"
-            android:inputType="number">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_brand_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_year_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:maxLength="4"
+                android:hint="@string/year_add"
+                android:inputType="number"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_model_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_year_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_model_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_model_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:enabled="false"
-            android:hint="@string/model_add"
-            android:inputType="text">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_year_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_model_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:hint="@string/model_add"
+                android:inputType="text"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_fuel_type_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_model_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_fuel_type_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_fuel_type_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:focusable="false"
-            android:hint="@string/fuel_type_add"
-            android:inputType="text">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_model_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_fuel_type_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:hint="@string/fuel_type_add"
+                android:inputType="text"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_power_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_fuel_type_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_power_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_power_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/power_add"
-            android:inputType="number">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_fuel_type_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_power_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:maxLength="4"
+                android:hint="@string/power_add"
+                android:inputType="number"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_seats_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_power_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_seats_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_price_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/seats_add"
-            android:maxLength="2"
-            android:inputType="number">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_power_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_price_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:hint="@string/price_add"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_price_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_seats_add_label">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_price_add_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/car_mileage_add_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/price_add"
-            android:inputType="numberDecimal">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/car_price_add_label">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/car_mileage_add_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:longClickable="false"
+                android:hint="@string/mileage_text"
+                android:inputType="numberDecimal"
+                android:textSize="20sp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/car_mileage_add_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/car_price_add_label">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/car_mileage_add_text"
+        <!--<Button
+            android:id="@+id/button_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_image"
+            app:layout_constraintBottom_toTopOf="@+id/button_add_new_car"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_mileage_add_label" />-->
+
+        <ImageView
+            android:id="@+id/image_view_add_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:contentDescription="@string/add_new_car"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_baseline_image_search_24"
+            app:layout_constraintBottom_toTopOf="@+id/button_add_new_car"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_mileage_add_label" />
+
+        <Button
+            android:id="@+id/button_add_new_car"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/mileage_text"
-            android:inputType="numberDecimal">
+            android:layout_marginHorizontal="48dp"
+            android:text="@string/add_new_car"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
 
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/button_add_new_car"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="48dp"
-        android:layout_marginVertical="16dp"
-        android:text="@string/add_new_car"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/car_mileage_add_label"></Button>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
