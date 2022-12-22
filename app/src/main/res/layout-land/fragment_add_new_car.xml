@@ -38,6 +38,7 @@
                 android:id="@+id/car_brand_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
                 android:hint="@string/brand_add"
                 android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -55,6 +56,8 @@
                 android:id="@+id/car_year_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
+                android:maxLength="4"
                 android:hint="@string/year_add"
                 android:inputType="number"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -72,6 +75,7 @@
                 android:id="@+id/car_model_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
                 android:hint="@string/model_add"
                 android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -89,6 +93,7 @@
                 android:id="@+id/car_fuel_type_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
                 android:hint="@string/fuel_type_add"
                 android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -106,6 +111,8 @@
                 android:id="@+id/car_power_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
+                android:maxLength="4"
                 android:hint="@string/power_add"
                 android:inputType="number"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -124,6 +131,7 @@
                 android:id="@+id/car_price_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
                 android:hint="@string/price_add"
                 android:inputType="numberDecimal"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -141,6 +149,7 @@
                 android:id="@+id/car_mileage_add_text"
                 android:layout_width="320dp"
                 android:layout_height="48dp"
+                android:longClickable="false"
                 android:hint="@string/mileage_text"
                 android:inputType="numberDecimal"
                 android:textSize="12sp">
