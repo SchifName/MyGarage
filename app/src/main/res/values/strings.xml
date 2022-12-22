@@ -49,7 +49,7 @@
     <string name="model_label_notification_item">MODEL</string>
     <string name="mileage_label_notification_item">MILEAGE</string>
     <string name="title_add_car">ADD CAR</string>
-    <string name="error_snackbar">Error not all fields are filled in correctly %s</string>
+    <string name="error_snackbar">Error not all fields are filled in correctly</string>
     <string name="blank_brand">the brand cannot be empty</string>
     <string name="error_year">the year field cannot be empty</string>
     <string name="blank_model">the model field cannot be empty</string>

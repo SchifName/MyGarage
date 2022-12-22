@@ -73,7 +73,7 @@ class AddNewCarFragment : Fragment() {
                 else {
                     if (car.image != null)
                         binding.imageViewAddImage.tag = "is_not_null"
-                    modifyCar()
+                    modifyCar(car)
                 }
             }
             imageViewAddImage.setOnClickListener {
@@ -169,7 +169,7 @@ class AddNewCarFragment : Fragment() {
     }
 
     @SuppressLint("StringFormatInvalid")
-    private fun modifyCar() {
+    private fun modifyCar(car: Car) {
         if (isValidCar()) {
 
             val id = carAddArgs.carId2
@@ -177,7 +177,7 @@ class AddNewCarFragment : Fragment() {
             val model = binding.carModelAddText.text.toString()
             val mileage = binding.carMileageAddText.text.toString()
 
-            if (binding.carMileageAddText.text.toString().toDouble() >= 100000){
+            if (binding.carMileageAddText.text.toString().toDouble() >= car.mileage + 100000){
                 notificationViewModel.scheduleReminder(
                     4,
                     TimeUnit.SECONDS,
