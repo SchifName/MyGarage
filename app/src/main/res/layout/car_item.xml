@@ -79,7 +79,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:maxLength="10"
                 android:textSize="@dimen/card_item_text_size"
                 app:layout_constraintStart_toStartOf="@+id/car_model"
                 app:layout_constraintTop_toBottomOf="@+id/car_model"
