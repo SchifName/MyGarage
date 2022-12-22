@@ -22,6 +22,7 @@ import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
+import com.example.mygarage.utils.FuelTypeAlertDialog
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -65,6 +66,9 @@ class AddNewCarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            carFuelTypeAddText.setOnClickListener {
+                FuelTypeAlertDialog(requireContext(), carFuelTypeAddText)
+            }
             if (carAddArgs.carId2 != 0L)
                 bindModCar()
             buttonAddNewCar.setOnClickListener {
