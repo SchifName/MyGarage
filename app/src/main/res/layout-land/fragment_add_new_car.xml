@@ -94,6 +94,8 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/fuel_type_add"
                 android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
