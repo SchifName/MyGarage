@@ -94,8 +94,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/fuel_type_add"
-                android:inputType="text"
                 android:textSize="20sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>

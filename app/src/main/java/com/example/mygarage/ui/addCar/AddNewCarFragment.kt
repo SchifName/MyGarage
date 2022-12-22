@@ -22,6 +22,7 @@ import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
+import com.example.mygarage.utils.FuelTypeAlertDialog
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -65,6 +66,9 @@ class AddNewCarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            carFuelTypeAddText.setOnClickListener {
+                FuelTypeAlertDialog(requireContext(), carFuelTypeAddText)
+            }
             if (carAddArgs.carId2 != 0L)
                 bindModCar()
             buttonAddNewCar.setOnClickListener {
@@ -73,7 +77,7 @@ class AddNewCarFragment : Fragment() {
                 else {
                     if (car.image != null)
                         binding.imageViewAddImage.tag = "is_not_null"
-                    modifyCar()
+                    modifyCar(car)
                 }
             }
             imageViewAddImage.setOnClickListener {
@@ -169,7 +173,7 @@ class AddNewCarFragment : Fragment() {
     }
 
     @SuppressLint("StringFormatInvalid")
-    private fun modifyCar() {
+    private fun modifyCar(car: Car) {
         if (isValidCar()) {
 
             val id = carAddArgs.carId2
@@ -177,7 +181,7 @@ class AddNewCarFragment : Fragment() {
             val model = binding.carModelAddText.text.toString()
             val mileage = binding.carMileageAddText.text.toString()
 
-            if (binding.carMileageAddText.text.toString().toDouble() >= 100000){
+            if (binding.carMileageAddText.text.toString().toDouble() >= car.mileage + 100000){
                 notificationViewModel.scheduleReminder(
                     4,
                     TimeUnit.SECONDS,
