@@ -52,7 +52,8 @@
                     android:id="@+id/brand_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
                     android:maxLength="10"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -61,9 +62,8 @@
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/car_detail_brand_title"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/model_detail"
                     app:layout_constraintStart_toEndOf="@+id/logo_detail"
-                    app:layout_constraintTop_toTopOf="@+id/model_detail"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="FERRARI" />
 
                 <ImageView
@@ -73,23 +73,22 @@
                     android:contentDescription="Car Logo"
                     app:layout_constraintBottom_toBottomOf="@+id/model_detail"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/model_detail"
+                    app:layout_constraintTop_toTopOf="@+id/brand_detail"
                     tools:src="@drawable/ic_baseline_directions_car_filled_24" />
 
                 <TextView
                     android:id="@+id/model_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
+                    android:textAllCaps="true"
+                    android:maxLength="13"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textAllCaps="true"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/car_detail_model_title"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/brand_detail"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/brand_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/brand_detail"
                     tools:text="F40" />
 
                 <TextView

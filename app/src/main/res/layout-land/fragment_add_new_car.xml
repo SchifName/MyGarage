@@ -39,8 +39,9 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/brand_add"
-                android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,8 +77,9 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/model_add"
-                android:inputType="text"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>

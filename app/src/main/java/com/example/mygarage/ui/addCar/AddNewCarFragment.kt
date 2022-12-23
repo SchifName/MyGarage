@@ -2,6 +2,8 @@ package com.example.mygarage.ui.addCar
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -37,7 +39,6 @@ class AddNewCarFragment : Fragment() {
     private val carAddArgs: AddNewCarFragmentArgs by navArgs()
     private lateinit var car: Car
 
-    private lateinit var viewModel: AddNewCarViewModel
 
     private val addNewCarViewModel: AddNewCarViewModel by viewModels {
         AddNewCarViewModelFactory(
@@ -65,10 +66,22 @@ class AddNewCarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        addNewCarViewModel.brandAcquisition(view)
+
         binding.apply {
             carFuelTypeAddText.setOnClickListener {
                 FuelTypeAlertDialog(requireContext(), carFuelTypeAddText)
             }
+
+            carBrandAddText.setOnClickListener {
+                setBrandCar()
+            }
+
+            carModelAddText.setOnClickListener {
+                setModelCar()
+            }
+
             if (carAddArgs.carId2 != 0L)
                 bindModCar()
             buttonAddNewCar.setOnClickListener {
@@ -129,6 +142,7 @@ class AddNewCarFragment : Fragment() {
             val action = AddNewCarFragmentDirections.actionAddNewCarFragmentToNavigationHome()
             findNavController().navigate(action)
         } else {
+            view?.let { Snackbar.make(it, snackBarBlank(), Snackbar.LENGTH_SHORT).show() }
             Log.d("error", "errore nella validità")
         }
     }
@@ -172,6 +186,81 @@ class AddNewCarFragment : Fragment() {
         }
     }
 
+    /**
+     * Private function for the appearance of an AlertDialog to select the car brand via API
+     */
+    private fun setBrandCar() {
+        val listBrandCar = addNewCarViewModel.getBrand()
+        val items = arrayOfNulls<CharSequence>(listBrandCar.size)
+        for (i in listBrandCar.indices) {
+            items[i] = listBrandCar[i]
+        }
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        builder.setTitle(R.string.choose_car)
+        builder.setSingleChoiceItems(
+            items,
+            addNewCarViewModel.checkedItemBrand
+        ) { _: DialogInterface, which ->
+            addNewCarViewModel.checkedItemBrand = which
+        }
+        builder.setItems(items) { _: DialogInterface, which ->
+            addNewCarViewModel.checkedItemBrand = which
+        }
+        builder.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
+            if (addNewCarViewModel.checkedItemBrand != -1) {
+                binding.carBrandAddText.setText(items[addNewCarViewModel.checkedItemBrand].toString())
+                //binding.carModelAddText.setText("")
+                binding.carModelAddText.text = null
+            } else {
+                //binding.carBrandAddText.setText("")
+                binding.carBrandAddText.text = null
+                view?.let { Snackbar.make(it, R.string.no_brand, Snackbar.LENGTH_SHORT).show() }
+            }
+        }
+        builder.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
+            //binding.carBrandAddText.setText("")
+            binding.carBrandAddText.text = null
+        }
+        builder.show()
+    }
+
+    /**
+     * Private function for the appearance of an AlertDialog to select the model of the selected brand via API
+     */
+    private fun setModelCar() {
+        val listModelCar = addNewCarViewModel.getModel(binding.carBrandAddText.text.toString())
+        val itemsCar = arrayOfNulls<CharSequence>(listModelCar.size)
+        for (i in listModelCar.indices) {
+            itemsCar[i] = listModelCar[i]
+        }
+        val builderModel: AlertDialog.Builder = AlertDialog.Builder(context)
+        builderModel.setTitle(R.string.choose_model)
+        builderModel.setSingleChoiceItems(
+            itemsCar,
+            addNewCarViewModel.checkedItemModel
+        ) { _: DialogInterface, which ->
+            addNewCarViewModel.checkedItemModel = which
+        }
+        builderModel.setItems(itemsCar) { _: DialogInterface, which ->
+            addNewCarViewModel.checkedItemModel = which
+        }
+        builderModel.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
+            if (addNewCarViewModel.checkedItemModel != -1) {
+                binding.carModelAddText.setText(itemsCar[addNewCarViewModel.checkedItemModel].toString())
+            } else {
+                //binding.carModelAddText.setText("")
+                binding.carModelAddText.text = null
+                view?.let { Snackbar.make(it, R.string.no_model, Snackbar.LENGTH_SHORT).show() }
+            }
+        }
+        builderModel.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
+            //binding.carModelAddText.setText("")
+            binding.carModelAddText.text = null
+        }
+        builderModel.show()
+    }
+
+
     @SuppressLint("StringFormatInvalid")
     private fun modifyCar(car: Car) {
         if (isValidCar()) {
@@ -212,6 +301,7 @@ class AddNewCarFragment : Fragment() {
                 AddNewCarFragmentDirections.actionAddNewCarFragmentToCarDetailFragment(carAddArgs.carId2)
             findNavController().navigate(action)
         } else {
+            view?.let { Snackbar.make(it, snackBarBlank(), Snackbar.LENGTH_SHORT).show() }
             Log.d("error", "errore nella validità")
         }
     }

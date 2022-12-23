@@ -33,6 +33,7 @@ fun FuelTypeAlertDialog(context: Context, text: TextInputEditText){
 
     builder.setNegativeButton(context.getString(R.string.delete_car_dialog_negative_button)) { _: DialogInterface, _ ->
         text.setText("")
+        text.text = null
     }
 
     builder.show()
