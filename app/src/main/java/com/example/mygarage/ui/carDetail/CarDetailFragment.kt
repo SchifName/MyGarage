@@ -74,6 +74,7 @@ class CarDetailFragment : Fragment() {
             //positive action
             builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
                 deleteCar(id)
+                id = 0
                 arg = null
                 val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
                 this.findNavController().navigate(action)
