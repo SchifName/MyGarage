@@ -7,7 +7,7 @@ import com.example.mygarage.R
 import com.example.mygarage.model.fuelType
 import com.google.android.material.textfield.TextInputEditText
 
-fun FuelTypeAlertDialog(context: Context, text: TextInputEditText){
+fun fuelTypeAlertDialog(context: Context, text: TextInputEditText){
 
     val values = fuelType.values()
 

@@ -24,7 +24,8 @@ import com.example.mygarage.databinding.FragmentAddNewCarBinding
 import com.example.mygarage.model.Car
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
-import com.example.mygarage.utils.FuelTypeAlertDialog
+import com.example.mygarage.utils.checkInternet
+import com.example.mygarage.utils.fuelTypeAlertDialog
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -71,7 +72,7 @@ class AddNewCarFragment : Fragment() {
 
         binding.apply {
             carFuelTypeAddText.setOnClickListener {
-                FuelTypeAlertDialog(requireContext(), carFuelTypeAddText)
+                fuelTypeAlertDialog(requireContext(), carFuelTypeAddText)
             }
 
             carBrandAddText.setOnClickListener {
@@ -190,74 +191,97 @@ class AddNewCarFragment : Fragment() {
      * Private function for the appearance of an AlertDialog to select the car brand via API
      */
     private fun setBrandCar() {
-        val listBrandCar = addNewCarViewModel.getBrand()
-        val items = arrayOfNulls<CharSequence>(listBrandCar.size)
-        for (i in listBrandCar.indices) {
-            items[i] = listBrandCar[i]
-        }
-        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setTitle(R.string.choose_car)
-        builder.setSingleChoiceItems(
-            items,
-            addNewCarViewModel.checkedItemBrand
-        ) { _: DialogInterface, which ->
-            addNewCarViewModel.checkedItemBrand = which
-        }
-        builder.setItems(items) { _: DialogInterface, which ->
-            addNewCarViewModel.checkedItemBrand = which
-        }
-        builder.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
-            if (addNewCarViewModel.checkedItemBrand != -1) {
-                binding.carBrandAddText.setText(items[addNewCarViewModel.checkedItemBrand].toString())
-                //binding.carModelAddText.setText("")
-                binding.carModelAddText.text = null
-            } else {
+        if(checkInternet(context)){
+
+            val listBrandCar = addNewCarViewModel.getBrand()
+            val items = arrayOfNulls<CharSequence>(listBrandCar.size)
+            for (i in listBrandCar.indices) {
+                items[i] = listBrandCar[i]
+            }
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle(R.string.choose_car)
+            builder.setSingleChoiceItems(
+                items,
+                addNewCarViewModel.checkedItemBrand
+            ) { _: DialogInterface, which ->
+                addNewCarViewModel.checkedItemBrand = which
+            }
+            builder.setItems(items) { _: DialogInterface, which ->
+                addNewCarViewModel.checkedItemBrand = which
+            }
+            builder.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
+                if (addNewCarViewModel.checkedItemBrand != -1) {
+                    binding.carBrandAddText.setText(items[addNewCarViewModel.checkedItemBrand].toString())
+                    //binding.carModelAddText.setText("")
+                    binding.carModelAddText.text = null
+                } else {
+                    //binding.carBrandAddText.setText("")
+                    binding.carBrandAddText.text = null
+                    view?.let { Snackbar.make(it, R.string.no_brand, Snackbar.LENGTH_SHORT).show() }
+                }
+            }
+            builder.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
                 //binding.carBrandAddText.setText("")
                 binding.carBrandAddText.text = null
-                view?.let { Snackbar.make(it, R.string.no_brand, Snackbar.LENGTH_SHORT).show() }
             }
+            builder.show()
+
+        }else{
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Required an internet connection")
+            builder.setNeutralButton("Ok"){ _: DialogInterface, _ ->
+                view?.let { Snackbar.make(it, "Make sure to activate an internet connection", Snackbar.LENGTH_SHORT).show() }
+            }
+            builder.show()
         }
-        builder.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
-            //binding.carBrandAddText.setText("")
-            binding.carBrandAddText.text = null
-        }
-        builder.show()
     }
 
     /**
      * Private function for the appearance of an AlertDialog to select the model of the selected brand via API
      */
     private fun setModelCar() {
-        val listModelCar = addNewCarViewModel.getModel(binding.carBrandAddText.text.toString())
-        val itemsCar = arrayOfNulls<CharSequence>(listModelCar.size)
-        for (i in listModelCar.indices) {
-            itemsCar[i] = listModelCar[i]
-        }
-        val builderModel: AlertDialog.Builder = AlertDialog.Builder(context)
-        builderModel.setTitle(R.string.choose_model)
-        builderModel.setSingleChoiceItems(
-            itemsCar,
-            addNewCarViewModel.checkedItemModel
-        ) { _: DialogInterface, which ->
-            addNewCarViewModel.checkedItemModel = which
-        }
-        builderModel.setItems(itemsCar) { _: DialogInterface, which ->
-            addNewCarViewModel.checkedItemModel = which
-        }
-        builderModel.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
-            if (addNewCarViewModel.checkedItemModel != -1) {
-                binding.carModelAddText.setText(itemsCar[addNewCarViewModel.checkedItemModel].toString())
-            } else {
+        if(checkInternet(context)){
+
+            val listModelCar = addNewCarViewModel.getModel(binding.carBrandAddText.text.toString())
+            val itemsCar = arrayOfNulls<CharSequence>(listModelCar.size)
+            for (i in listModelCar.indices) {
+                itemsCar[i] = listModelCar[i]
+            }
+            val builderModel: AlertDialog.Builder = AlertDialog.Builder(context)
+            builderModel.setTitle(R.string.choose_model)
+            builderModel.setSingleChoiceItems(
+                itemsCar,
+                addNewCarViewModel.checkedItemModel
+            ) { _: DialogInterface, which ->
+                addNewCarViewModel.checkedItemModel = which
+            }
+            builderModel.setItems(itemsCar) { _: DialogInterface, which ->
+                addNewCarViewModel.checkedItemModel = which
+            }
+            builderModel.setPositiveButton(R.string.delete_car_dialog_positive_button) { _: DialogInterface, _ ->
+                if (addNewCarViewModel.checkedItemModel != -1) {
+                    binding.carModelAddText.setText(itemsCar[addNewCarViewModel.checkedItemModel].toString())
+                } else {
+                    //binding.carModelAddText.setText("")
+                    binding.carModelAddText.text = null
+                    view?.let { Snackbar.make(it, R.string.no_model, Snackbar.LENGTH_SHORT).show() }
+                }
+            }
+            builderModel.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
                 //binding.carModelAddText.setText("")
                 binding.carModelAddText.text = null
-                view?.let { Snackbar.make(it, R.string.no_model, Snackbar.LENGTH_SHORT).show() }
             }
+            builderModel.show()
+
+        }else{
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Required an internet connection")
+            builder.setNeutralButton("Ok"){ _: DialogInterface, _ ->
+                view?.let { Snackbar.make(it, "Make sure to activate an internet connection", Snackbar.LENGTH_SHORT).show() }
+            }
+            builder.show()
         }
-        builderModel.setNegativeButton(R.string.delete_car_dialog_negative_button) { _: DialogInterface, _ ->
-            //binding.carModelAddText.setText("")
-            binding.carModelAddText.text = null
-        }
-        builderModel.show()
+
     }
 
 
