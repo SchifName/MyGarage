@@ -1,6 +1,5 @@
 package com.example.mygarage.ui.notifications
 
-import android.content.Context
 import android.graphics.*
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

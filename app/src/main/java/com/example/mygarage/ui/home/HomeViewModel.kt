@@ -20,7 +20,6 @@ class HomeViewModel(private val CarDao: CarDao) : ViewModel() {
 
     // Status Logo Api
     private val _statusLogApi = MutableLiveData<LogoApiStatus>()
-    val statusLogApi: LiveData<LogoApiStatus> = _statusLogApi
 
     private val _logoDataApi = MutableLiveData<List<CarLogo>>()
     val logoDataApi: LiveData<List<CarLogo>> = _logoDataApi
