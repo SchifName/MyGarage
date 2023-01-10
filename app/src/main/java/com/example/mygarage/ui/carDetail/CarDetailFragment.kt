@@ -18,7 +18,6 @@ import com.example.mygarage.model.*
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
 import com.example.mygarage.ui.home.setAndGetUriByBrandParsingListOfLogoAndImageView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarDetailFragment : Fragment() {
 

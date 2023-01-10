@@ -138,6 +138,7 @@ class AddNewCarFragment : Fragment() {
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
                 Mileage = binding.carMileageAddText.text.toString().toDouble(),
+                First_mileage = binding.carMileageAddText.text.toString().toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )
             val action = AddNewCarFragmentDirections.actionAddNewCarFragmentToNavigationHome()
@@ -293,8 +294,10 @@ class AddNewCarFragment : Fragment() {
             val brand = binding.carBrandAddText.text.toString()
             val model = binding.carModelAddText.text.toString()
             val mileage = binding.carMileageAddText.text.toString()
+            val first: Double
 
-            if (binding.carMileageAddText.text.toString().toDouble() >= car.mileage + 100000){
+            if (binding.carMileageAddText.text.toString().toDouble() >= car.firstMileage + 100000){
+                first = binding.carMileageAddText.text.toString().toDouble()
                 notificationViewModel.scheduleReminder(
                     4,
                     TimeUnit.SECONDS,
@@ -307,7 +310,8 @@ class AddNewCarFragment : Fragment() {
                     model,
                     mileage
                 )
-            }
+            }else
+                first = car.firstMileage
 
             addNewCarViewModel.modCar(
                 id = id,
@@ -317,6 +321,7 @@ class AddNewCarFragment : Fragment() {
                 FuelType = binding.carFuelTypeAddText.text.toString(),
                 Power = binding.carPowerAddText.text.toString().toInt(),
                 Price = binding.carPriceAddText.text.toString().toDouble(),
+                First_mileage = first,
                 Mileage = mileage.toDouble(),
                 Image = checkIfInsertIsNull(createBitmapFromView(binding.imageViewAddImage))
             )

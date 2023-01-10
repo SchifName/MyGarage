@@ -45,7 +45,8 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         FuelType: String,
         Price: Double,
         Image: Bitmap?,
-        Mileage: Double
+        Mileage: Double,
+        First_mileage: Double
     ) {
         val car = Car(
             brand = Brand,
@@ -55,7 +56,8 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
             fuelType = FuelType,
             price = Price,
             image = Image?.toByteArray(),
-            mileage = Mileage
+            mileage = Mileage,
+            firstMileage = First_mileage
         )
 
         viewModelScope.launch {
@@ -72,7 +74,8 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
         FuelType: String,
         Price: Double,
         Image: Bitmap?,
-        Mileage: Double
+        Mileage: Double,
+        First_mileage: Double
     ) {
         val car = Car(
             id = id,
@@ -83,7 +86,8 @@ class AddNewCarViewModel(private val carDao: CarDao) : ViewModel() {
             fuelType = FuelType,
             price = Price,
             image = Image?.toByteArray(),
-            mileage = Mileage
+            mileage = Mileage,
+            firstMileage = First_mileage
         )
 
         CoroutineScope(Dispatchers.IO).launch {

@@ -18,16 +18,6 @@ enum class LogoApiStatus {
 class HomeViewModel(private val CarDao: CarDao) : ViewModel() {
     val allCars: LiveData<List<Car>> = CarDao.getCars().asLiveData()
 
-    /*private var _eventNetworkError = MutableLiveData<Boolean>(false)
-
-    val eventNetworkError: LiveData<Boolean>
-        get() = _eventNetworkError
-
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
-
-    val isNetworkErrorShown: LiveData<Boolean>
-        get() = _isNetworkErrorShown*/
-
     // Status Logo Api
     private val _statusLogApi = MutableLiveData<LogoApiStatus>()
     val statusLogApi: LiveData<LogoApiStatus> = _statusLogApi

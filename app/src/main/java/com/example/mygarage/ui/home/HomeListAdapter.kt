@@ -28,10 +28,6 @@ class HomeListAdapter(
             binding.car = car
             binding.carYearProduction.text =
                 context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
-            /*binding.carFuelType.text = context.getString(R.string.fuel_type_detail_string, car.fuelType)
-            binding.carPrice.text = context.getString(R.string.price_detail_string, formatCurrency(car.price))
-            binding.carPower.text = context.getString(R.string.power_detail_string, carPowerWithUnitString(car.power))
-            binding.carMileage.text = context.getString(R.string.mileage_detail_string, carMileageWithUnitString(car.mileage))*/
             binding.card.setOnClickListener {
                 clickListener(car)
             }
