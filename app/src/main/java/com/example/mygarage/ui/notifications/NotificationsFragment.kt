@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -55,6 +56,10 @@ class NotificationsFragment : Fragment() {
         notificationViewModel.allNotification.observe(this.viewLifecycleOwner) { notificationSelected ->
             notificationSelected.let {
                 adapter.submitList(it)
+                if (it.isNotEmpty())
+                    binding.swipeDelete?.visibility = View.VISIBLE
+                else
+                    binding.swipeDelete?.visibility = View.GONE
             }
         }
 
