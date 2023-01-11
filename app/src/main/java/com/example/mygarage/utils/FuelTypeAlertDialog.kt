@@ -7,7 +7,7 @@ import com.example.mygarage.R
 import com.example.mygarage.model.fuelType
 import com.google.android.material.textfield.TextInputEditText
 
-fun FuelTypeAlertDialog(context: Context, text: TextInputEditText){
+fun fuelTypeAlertDialog(context: Context, text: TextInputEditText){
 
     val values = fuelType.values()
 
@@ -33,6 +33,7 @@ fun FuelTypeAlertDialog(context: Context, text: TextInputEditText){
 
     builder.setNegativeButton(context.getString(R.string.delete_car_dialog_negative_button)) { _: DialogInterface, _ ->
         text.setText("")
+        text.text = null
     }
 
     builder.show()

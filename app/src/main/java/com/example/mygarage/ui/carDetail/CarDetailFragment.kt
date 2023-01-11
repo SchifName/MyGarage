@@ -18,7 +18,6 @@ import com.example.mygarage.model.*
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModel
 import com.example.mygarage.notificationManager.viewModelNotificationManager.NotificationManagerViewModelFactory
 import com.example.mygarage.ui.home.setAndGetUriByBrandParsingListOfLogoAndImageView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarDetailFragment : Fragment() {
 
@@ -47,14 +46,13 @@ class CarDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCarDetailBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val arg = arguments?.getLong("CarIdNotification")
+        var arg = arguments?.getLong("CarIdNotification")
         var id = carDetailArgs.carId
         if (arg != null && arg > 0)
             id = arg
@@ -75,6 +73,8 @@ class CarDetailFragment : Fragment() {
             //positive action
             builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
                 deleteCar(id)
+                id = 0
+                arg = null
                 val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
                 this.findNavController().navigate(action)
             }

@@ -38,8 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/brand_add"
-                android:inputType="text"
                 android:textSize="34sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -75,8 +76,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:longClickable="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:hint="@string/model_add"
-                android:inputType="text"
                 android:textSize="34sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>

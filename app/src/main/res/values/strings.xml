@@ -50,14 +50,18 @@
     <string name="mileage_label_notification_item">MILEAGE</string>
     <string name="title_add_car">ADD CAR</string>
     <string name="error_snackbar">Error not all fields are filled in correctly</string>
-    <string name="blank_brand">the brand cannot be empty</string>
-    <string name="error_year">the year field cannot be empty</string>
-    <string name="blank_model">the model field cannot be empty</string>
-    <string name="blank_fuel">the fuel field cannot be empty</string>
-    <string name="error_price">price cant be = 0</string>
-    <string name="error_power">The power can\'t be more than 3000</string>
-    <string name="error_km">The mileage field can\'t be 0 or less</string>
+    <string name="blank_brand">The brand cannot be empty</string>
+    <string name="error_year">The year of production can\'t be less than 1800</string>
+    <string name="blank_model">The model field cannot be empty</string>
+    <string name="blank_fuel">The fuel field cannot be empty</string>
+    <string name="error_price">Price can\'t be 0 or less</string>
+    <string name="error_power">The power can\'t be less than 1 or more than 3000</string>
+    <string name="error_km">The mileage field can\'t be 0 (or less) or more than 1000000</string>
     <string name="choose_fuel_type_title">FUEL</string>
     <string name="delete_car_dialog_positive_button">Ok</string>
     <string name="delete_car_dialog_negative_button">Cancel</string>
+    <string name="choose_car">CHOOSE A BRAND</string>
+    <string name="no_brand">Hey you have to choose a brand to continue.</string>
+    <string name="no_model">Hey you have to choose a model to continue.</string>
+    <string name="choose_model">CHOOSE A MODEL</string>
 </resources>

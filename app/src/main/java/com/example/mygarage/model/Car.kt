@@ -15,6 +15,7 @@ data class Car(
     @ColumnInfo val price: Double,
     @ColumnInfo(name="power") val power: Int,
     @ColumnInfo val mileage: Double,
+    @ColumnInfo val firstMileage: Double,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB) val image: ByteArray?,
     @ColumnInfo(name="year_production") val yearOfProduction: Int,
 )
