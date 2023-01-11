@@ -46,12 +46,11 @@
 
             <TextView
                 android:id="@+id/car_brand"
-                android:layout_width="wrap_content"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="@{car.brand}"
                 android:textAllCaps="true"
-                android:maxLength="10"
                 android:textSize="48sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/car_image"

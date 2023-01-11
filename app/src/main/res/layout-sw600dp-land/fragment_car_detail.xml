@@ -43,58 +43,56 @@
                     android:id="@+id/brand_detail"
                     android:layout_width="300dp"
                     android:layout_height="80dp"
-                    android:text="@{car.brand}"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:maxLength="10"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textSize="30sp"
+                    android:text="@{car.brand}"
+                    android:gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textSize="32sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/model_detail"
+                    app:layout_constraintBottom_toBottomOf="@+id/logo_detail"
                     app:layout_constraintEnd_toStartOf="@+id/model_detail"
-                    app:layout_constraintTop_toTopOf="@+id/model_detail"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:text="FERRARI" />
+                    app:layout_constraintTop_toTopOf="@+id/logo_detail"
+                    tools:text="FERRARI"
+                    tools:ignore="RtlCompat" />
 
                 <ImageView
                     android:id="@+id/logo_detail"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:contentDescription="Car Logo"
-                    app:layout_constraintBottom_toBottomOf="@+id/brand_detail"
                     app:layout_constraintEnd_toStartOf="@+id/brand_detail"
-                    app:layout_constraintTop_toTopOf="@+id/brand_detail"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/ic_baseline_directions_car_filled_24" />
 
                 <TextView
                     android:id="@+id/model_detail"
-                    android:layout_width="215dp"
+                    android:layout_width="200dp"
                     android:layout_height="80dp"
-                    android:layout_marginTop="20dp"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:maxLength="10"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:textAllCaps="true"
+                    android:textSize="32sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/brand_detail"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="F40" />
+                    app:layout_constraintTop_toTopOf="@+id/brand_detail"
+                    tools:text="F40"/>
 
                 <TextView
                     android:id="@+id/price_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="30dp"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="48sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/detail_car_image"
-                    app:layout_constraintTop_toBottomOf="@+id/brand_detail"
+                    app:layout_constraintTop_toBottomOf="@+id/model_detail"
                     tools:text="PREZZO" />
 
                 <TextView
