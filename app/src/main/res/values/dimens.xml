@@ -9,9 +9,9 @@
     <dimen name="car_detail_price">38sp</dimen>
     <dimen name="car_info_title">38sp</dimen>
     <dimen name="car_info_detail">28sp</dimen>
-    <dimen name="car_detail_brand_title_tablet">60sp</dimen>
-    <dimen name="car_detail_model_title_tablet">60sp</dimen>
-    <dimen name="car_detail_price_tablet">60sp</dimen>
-    <dimen name="car_info_detail_tablet">48sp</dimen>
-    <dimen name="car_info_title_tablet">60sp</dimen>
+    <dimen name="car_detail_brand_title_tablet">46sp</dimen>
+    <dimen name="car_detail_model_title_tablet">40sp</dimen>
+    <dimen name="car_detail_price_tablet">46sp</dimen>
+    <dimen name="car_info_detail_tablet">40sp</dimen>
+    <dimen name="car_info_title_tablet">46sp</dimen>
 </resources>

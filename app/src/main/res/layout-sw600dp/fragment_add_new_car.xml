@@ -133,9 +133,10 @@
                 android:id="@+id/car_price_add_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:longClickable="false"
                 android:hint="@string/price_add"
                 android:inputType="numberDecimal"
+                android:longClickable="false"
+                android:maxLength="8"
                 android:textSize="34sp"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -151,9 +152,10 @@
                 android:id="@+id/car_mileage_add_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:longClickable="false"
                 android:hint="@string/mileage_text"
                 android:inputType="numberDecimal"
+                android:longClickable="false"
+                android:maxLength="8"
                 android:textSize="34sp">
 
             </com.google.android.material.textfield.TextInputEditText>

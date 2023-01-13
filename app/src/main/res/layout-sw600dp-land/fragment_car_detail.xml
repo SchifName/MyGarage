@@ -31,7 +31,7 @@
                 <ImageView
                     android:id="@+id/detail_car_image"
                     android:layout_width="0dp"
-                    android:layout_height="655dp"
+                    android:layout_height="0dp"
                     android:contentDescription="Car Image"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="parent"

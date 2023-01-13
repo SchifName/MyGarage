@@ -136,6 +136,7 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:longClickable="false"
+                android:maxLength="8"
                 android:hint="@string/price_add"
                 android:inputType="numberDecimal"
                 android:textSize="12sp"></com.google.android.material.textfield.TextInputEditText>
@@ -155,6 +156,7 @@
                 android:layout_height="48dp"
                 android:longClickable="false"
                 android:hint="@string/mileage_text"
+                android:maxLength="8"
                 android:inputType="numberDecimal"
                 android:textSize="12sp">
 

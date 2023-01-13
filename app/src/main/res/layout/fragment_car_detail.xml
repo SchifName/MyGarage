@@ -129,6 +129,7 @@
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="@dimen/car_info_title"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/price_title"
                     tools:text="DETTAGLI" />
@@ -141,6 +142,7 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/car_info_title"
                     tools:text="Power 111111" />
@@ -154,9 +156,10 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
-                    app:layout_constraintStart_toStartOf="@+id/car_power_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/car_power_detail"
-                    tools:text="2000000km"/>
+                    tools:text="2000000km" />
 
                 <TextView
                     android:id="@+id/car_production_detail"
@@ -166,22 +169,24 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
-                    app:layout_constraintStart_toStartOf="@+id/car_mileage_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/car_mileage_detail"
-                    tools:text="Year of production 2002"/>
+                    tools:text="Year of production 2002" />
 
                 <TextView
                     android:id="@+id/car_fuel_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:maxLength="27"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:layout_marginTop="20dp"
                     android:textSize="@dimen/car_info_detail"
-                    app:layout_constraintStart_toStartOf="@+id/car_production_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/car_production_detail"
-                    tools:text="Gasoline"/>
+                    tools:text="Gasoline" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

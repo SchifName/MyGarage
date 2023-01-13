@@ -26,7 +26,7 @@ class HomeListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(car: Car, clickListener: (Car) -> Unit, logoDataApi: LiveData<List<CarLogo>>) {
             binding.car = car
-            binding.carYearProduction?.text = context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
+            //binding.carYearProduction?.text = context.getString(R.string.year_detail_string, car.yearOfProduction.toString())
             binding.card.setOnClickListener {
                 clickListener(car)
             }
