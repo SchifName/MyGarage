@@ -56,11 +56,10 @@ class NotificationsFragment : Fragment() {
         notificationViewModel.allNotification.observe(this.viewLifecycleOwner) { notificationSelected ->
             notificationSelected.let {
                 adapter.submitList(it)
-                if (it.isNotEmpty())
-                {
+                if (it.isNotEmpty()) {
                     binding.notificationFoundConstraintLayout.visibility = View.VISIBLE
                     binding.notificationNotFoundConstraintLayout.visibility = View.GONE
-                }else{
+                } else {
                     binding.notificationFoundConstraintLayout.visibility = View.GONE
                     binding.notificationNotFoundConstraintLayout.visibility = View.VISIBLE
                 }

@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/brand_text"
-                android:layout_width="80dp"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:text="@{notification.brand}"
@@ -80,7 +80,7 @@
 
             <TextView
                 android:id="@+id/model_text"
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:text="@{notification.model}"
