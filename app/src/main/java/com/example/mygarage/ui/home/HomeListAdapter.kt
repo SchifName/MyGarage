@@ -41,7 +41,7 @@ class HomeListAdapter(
                     bmp
                 )
             } else {
-                binding.carImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
+                binding.carImage.setImageResource(R.drawable.ic_base_image)
             }
             binding.executePendingBindings()
         }

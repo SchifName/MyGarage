@@ -9,7 +9,8 @@ import com.example.mygarage.ui.home.LogoApiStatus
 import kotlinx.coroutines.launch
 
 class CarDetailViewModel(private val carDao: CarDao) : ViewModel() {
-
+    var idCar: Long = 0
+    var arg: Long? = null
     // Status Logo Api
     private val _statusLogApi = MutableLiveData<LogoApiStatus>()
     val statusLogApi: LiveData<LogoApiStatus> = _statusLogApi

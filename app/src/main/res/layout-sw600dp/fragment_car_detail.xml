@@ -166,32 +166,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/modify_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@string/delete_car_content_description"
-            android:src="@drawable/ic_baseline_mode_24"
-            app:fabCustomSize="90dp"
-            app:layout_constraintBottom_toTopOf="@+id/delete_fab"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/delete_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:layout_marginEnd="50dp"
-            android:contentDescription="@string/delete_car_content_description"
-            android:src="@drawable/ic_baseline_delete_24"
-            app:fabCustomSize="90dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

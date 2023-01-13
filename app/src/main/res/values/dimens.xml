@@ -4,8 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_item_text_size">15sp</dimen>
     <dimen name="card_margin">16dp</dimen>
-    <dimen name="car_detail_brand_title">34sp</dimen>
-    <dimen name="car_detail_model_title">34sp</dimen>
+    <dimen name="car_detail_brand_title">25sp</dimen>
+    <dimen name="car_detail_model_title">16sp</dimen>
     <dimen name="car_detail_price">38sp</dimen>
     <dimen name="car_info_title">38sp</dimen>
     <dimen name="car_info_detail">28sp</dimen>

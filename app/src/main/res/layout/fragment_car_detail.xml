@@ -39,29 +39,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/price_title" />
 
-                <ImageView
-                    android:id="@+id/detail_car_image"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/car_card_image"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:contentDescription="Car Image"
-                    android:scaleType="fitXY"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="10dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/logo_detail" />
+                    app:cardBackgroundColor="@color/image_background"
+                    app:layout_constraintTop_toBottomOf="@+id/logo_detail">
+
+                    <ImageView
+                        android:id="@+id/detail_car_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:padding="7dp"
+                        android:contentDescription="Car Image"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent" />
+
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/brand_detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:maxLength="10"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:text="@{car.brand}"
+                    android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/car_detail_brand_title"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/logo_detail"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="FERRARI" />
@@ -70,6 +85,7 @@
                     android:id="@+id/logo_detail"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_marginStart="15dp"
                     android:contentDescription="Car Logo"
                     app:layout_constraintBottom_toBottomOf="@+id/model_detail"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,15 +94,15 @@
 
                 <TextView
                     android:id="@+id/model_detail"
-                    android:layout_width="wrap_content"
+                    android:layout_width="275dp"
                     android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:maxLength="13"
-                    android:maxLines="1"
-                    android:singleLine="true"
                     android:textColor="?attr/colorOnPrimary"
                     android:textSize="@dimen/car_detail_model_title"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/brand_detail"
                     app:layout_constraintStart_toStartOf="@+id/brand_detail"
                     app:layout_constraintTop_toBottomOf="@+id/brand_detail"
                     tools:text="F40" />
@@ -95,13 +111,13 @@
                     android:id="@+id/price_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="@dimen/car_detail_price"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_car_image"
+                    app:layout_constraintTop_toBottomOf="@+id/car_card_image"
                     tools:text="PREZZO" />
 
                 <TextView
@@ -113,7 +129,7 @@
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="@dimen/car_info_title"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/price_title"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/price_title"
                     tools:text="DETTAGLI" />
 
@@ -125,8 +141,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
-                    app:layout_constraintStart_toStartOf="@+id/car_info_title"
-                    app:layout_constraintTop_toBottomOf="@+id/car_info_title" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/car_info_title"
+                    tools:text="Power 111111" />
 
                 <TextView
                     android:id="@+id/car_mileage_detail"
@@ -138,7 +155,8 @@
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
                     app:layout_constraintStart_toStartOf="@+id/car_power_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/car_power_detail" />
+                    app:layout_constraintTop_toBottomOf="@+id/car_power_detail"
+                    tools:text="2000000km"/>
 
                 <TextView
                     android:id="@+id/car_production_detail"
@@ -149,7 +167,8 @@
                     android:singleLine="true"
                     android:textSize="@dimen/car_info_detail"
                     app:layout_constraintStart_toStartOf="@+id/car_mileage_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/car_mileage_detail" />
+                    app:layout_constraintTop_toBottomOf="@+id/car_mileage_detail"
+                    tools:text="Year of production 2002"/>
 
                 <TextView
                     android:id="@+id/car_fuel_detail"
@@ -161,34 +180,11 @@
                     android:layout_marginTop="20dp"
                     android:textSize="@dimen/car_info_detail"
                     app:layout_constraintStart_toStartOf="@+id/car_production_detail"
-                    app:layout_constraintTop_toBottomOf="@+id/car_production_detail" />
+                    app:layout_constraintTop_toBottomOf="@+id/car_production_detail"
+                    tools:text="Gasoline"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/modify_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:layout_marginEnd="50dp"
-            android:contentDescription="@string/delete_car_content_description"
-            android:src="@drawable/ic_baseline_mode_24"
-            app:layout_constraintBottom_toTopOf="@+id/delete_fab"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/delete_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:layout_marginEnd="50dp"
-            android:contentDescription="@string/delete_car_content_description"
-            android:src="@drawable/ic_baseline_delete_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

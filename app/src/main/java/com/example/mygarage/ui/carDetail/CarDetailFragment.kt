@@ -3,9 +3,7 @@ package com.example.mygarage.ui.carDetail
 import android.app.AlertDialog
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -45,54 +43,23 @@ class CarDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         _binding = FragmentCarDetailBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var arg = arguments?.getLong("CarIdNotification")
-        var id = carDetailArgs.carId
-        if (arg != null && arg > 0)
-            id = arg
-        if (id > 0) {
-            detailCarViewModel.getCarById(id).observe(this.viewLifecycleOwner) { carSelected ->
+        detailCarViewModel.arg = arguments?.getLong("CarIdNotification")
+        detailCarViewModel.idCar = carDetailArgs.carId
+        var actualArg = detailCarViewModel.arg
+        var idCar = detailCarViewModel.idCar
+        if (actualArg != null && actualArg > 0) idCar = actualArg
+        if (idCar > 0) {
+            detailCarViewModel.getCarById(idCar).observe(this.viewLifecycleOwner) { carSelected ->
                 car = carSelected
                 bindCar(car)
             }
-        }
-        binding.deleteFab.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
-            //set title
-            builder.setTitle(getString(R.string.delete_dialog_title))
-            //set message
-            builder.setMessage(getString(R.string.delete_dialog_message))
-            builder.setIcon(android.R.drawable.ic_dialog_alert)
-
-            //positive action
-            builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
-                deleteCar(id)
-                id = 0
-                arg = null
-                val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
-                this.findNavController().navigate(action)
-            }
-
-            //negative action
-            builder.setNegativeButton(getString(R.string.delete_dialog_negative_button)) { _, _ ->
-
-            }
-
-            val alertDialog: AlertDialog = builder.create()
-            //other dialog properties
-            alertDialog.setCancelable(false)
-            alertDialog.show()
-        }
-
-        binding.modifyFab.setOnClickListener {
-            val action = CarDetailFragmentDirections.actionCarDetailFragmentToAddNewCarFragment(id)
-            this.findNavController().navigate(action)
         }
     }
 
@@ -122,8 +89,52 @@ class CarDetailFragment : Fragment() {
                     bmp
                 )
             } else {
-                binding.detailCarImage.setImageResource(R.drawable.ic_baseline_directions_car_filled_24)
+                binding.detailCarImage.setImageResource(R.drawable.ic_base_image)
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.appbar_menu_fragment_detail, menu)
+    }
+
+    //TODO QUI DENTRO
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.modify_option -> {
+                val action = CarDetailFragmentDirections.actionCarDetailFragmentToAddNewCarFragment(detailCarViewModel.idCar)
+                this.findNavController().navigate(action)
+                true
+            }
+            R.id.delete_option -> {
+                val builder = AlertDialog.Builder(requireContext())
+                //set title
+                builder.setTitle(getString(R.string.delete_dialog_title))
+                //set message
+                builder.setMessage(getString(R.string.delete_dialog_message))
+                builder.setIcon(android.R.drawable.ic_dialog_alert)
+
+                //positive action
+                builder.setPositiveButton(getString(R.string.delete_dialog_positive_button)) { _, _ ->
+                    deleteCar(detailCarViewModel.idCar)
+                    detailCarViewModel.idCar = 0
+                    detailCarViewModel.arg = null
+                    val action = CarDetailFragmentDirections.actionCarDetailFragmentToNavigationHome()
+                    this.findNavController().navigate(action)
+                }
+
+                //negative action
+                builder.setNegativeButton(getString(R.string.delete_dialog_negative_button)) { _, _ ->
+
+                }
+
+                val alertDialog: AlertDialog = builder.create()
+                //other dialog properties
+                alertDialog.setCancelable(false)
+                alertDialog.show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

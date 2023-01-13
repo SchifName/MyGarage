@@ -12,6 +12,7 @@
     <color name="grey_secondary_light">#FF8EACBC</color>
     <color name="grey_secondary_dark">#FF34515F</color>
     <color name="black">#FF000000</color>
+    <color name="image_background">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FFf44336</color>
 </resources>

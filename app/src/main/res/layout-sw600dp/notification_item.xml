@@ -26,9 +26,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/notification_item_constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/card_margin"
-            android:layout_marginEnd="@dimen/card_margin">
+            android:layout_marginTop="@dimen/card_margin"
+            android:layout_marginEnd="@dimen/card_margin"
+            android:layout_marginBottom="@dimen/card_margin">
 
             <TextView
                 android:id="@+id/notification_title"
@@ -55,7 +57,7 @@
                 android:text="@{notification.content}"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="34sp"
+                android:textSize="26sp"
                 app:layout_constraintEnd_toEndOf="@+id/notification_title"
                 app:layout_constraintStart_toStartOf="@id/notification_title"
                 app:layout_constraintTop_toBottomOf="@id/notification_title"
@@ -65,16 +67,13 @@
 
             <TextView
                 android:id="@+id/brand_text"
-                android:layout_width="wrap_content"
+                android:layout_width="275dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:maxLines="2"
+                android:singleLine="true"
                 android:text="@{notification.brand}"
                 android:textAlignment="center"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="@+id/brand_label"
                 app:layout_constraintStart_toStartOf="@+id/brand_label"
                 app:layout_constraintTop_toBottomOf="@+id/brand_label"
@@ -82,14 +81,12 @@
 
             <TextView
                 android:id="@+id/model_text"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
                 android:text="@{notification.model}"
                 android:textAlignment="center"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textSize="24sp"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="@+id/model_label"
                 app:layout_constraintStart_toStartOf="@+id/model_label"
                 app:layout_constraintTop_toBottomOf="@+id/model_label"
@@ -99,12 +96,12 @@
                 android:id="@+id/car_mileage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{notification.mileage}"
-                android:textAlignment="center"
                 android:maxLength="15"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textSize="24sp"
+                android:text="@{notification.mileage}"
+                android:textAlignment="center"
+                android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="@+id/model_text"
                 app:layout_constraintEnd_toEndOf="@+id/mileage_label"
                 app:layout_constraintStart_toStartOf="@+id/mileage_label"
@@ -115,11 +112,11 @@
                 android:id="@+id/brand_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="85dp"
                 android:text="@string/brand_label_notification_item"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/model_label" />
@@ -132,24 +129,36 @@
                 android:text="@string/model_label_notification_item"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/notification_content"
-                app:layout_constraintStart_toStartOf="@+id/notification_content"
-                app:layout_constraintTop_toBottomOf="@+id/notification_content" />
+                app:layout_constraintEnd_toEndOf="@+id/details_label"
+                app:layout_constraintStart_toStartOf="@+id/details_label"
+                app:layout_constraintTop_toBottomOf="@+id/details_label" />
 
             <TextView
                 android:id="@+id/mileage_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="85dp"
                 android:text="@string/mileage_label_notification_item"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/car_mileage"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/model_label" />
+
+            <TextView
+                android:id="@+id/details_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/details"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/notification_content"
+                app:layout_constraintStart_toStartOf="@+id/notification_content"
+                app:layout_constraintTop_toBottomOf="@+id/notification_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

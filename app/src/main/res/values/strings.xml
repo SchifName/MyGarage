@@ -64,4 +64,5 @@
     <string name="no_brand">Hey you have to choose a brand to continue.</string>
     <string name="no_model">Hey you have to choose a model to continue.</string>
     <string name="choose_model">CHOOSE A MODEL</string>
+    <string name="details">DETAILS</string>
 </resources>
