@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="SERIAL_NUMBER" />
-            <value value="P2127M005018" />
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\v.angelino\.android\avd\Nexus_10_API_30.avd" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-01-13T13:45:37.078990700Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-01-13T15:14:54.302801400Z" />
   </component>
 </project>

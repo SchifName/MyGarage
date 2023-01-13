@@ -19,19 +19,21 @@
         <ScrollView
             android:id="@+id/scrollview_car_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraint_layout_car_detail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 tools:context=".ui.carDetail.CarDetailFragment">
 
 
                 <ImageView
                     android:id="@+id/detail_car_image"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="675dp"
                     android:contentDescription="Car Image"
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +44,8 @@
                 <TextView
                     android:id="@+id/brand_detail"
                     android:layout_width="500dp"
-                    android:layout_height="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:text="@{car.brand}"
@@ -67,12 +70,13 @@
                 <TextView
                     android:id="@+id/model_detail"
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:maxLines="1"
-                    android:singleLine="true"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:maxLines="2"
+                    android:singleLine="false"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:textSize="32sp"
+                    android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/brand_detail"
@@ -82,7 +86,8 @@
                 <TextView
                     android:id="@+id/price_title"
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="35sp"
@@ -95,7 +100,8 @@
                 <TextView
                     android:id="@+id/car_info_title"
                     android:layout_width="0dp"
-                    android:layout_height="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:text="@string/detail"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_red_light"
@@ -110,6 +116,7 @@
                     android:id="@+id/car_power_detail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="center"

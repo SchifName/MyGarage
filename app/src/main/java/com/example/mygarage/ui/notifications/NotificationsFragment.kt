@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -41,9 +40,10 @@ class NotificationsFragment : Fragment() {
         val adapter = NotificationListAdapter()
 
 
-        val notificationSwipeGesture = object : NotificationSwipeGesture(){
+        val notificationSwipeGesture = object : NotificationSwipeGesture() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val notification = notificationViewModel.allNotification.value?.get(viewHolder.absoluteAdapterPosition)
+                val notification =
+                    notificationViewModel.allNotification.value?.get(viewHolder.absoluteAdapterPosition)
                 if (notification != null) {
                     notificationViewModel.deleteNotification(notification)
                 }
@@ -57,9 +57,14 @@ class NotificationsFragment : Fragment() {
             notificationSelected.let {
                 adapter.submitList(it)
                 if (it.isNotEmpty())
-                    binding.swipeDelete?.visibility = View.VISIBLE
-                else
-                    binding.swipeDelete?.visibility = View.GONE
+                {
+                    binding.notificationFoundConstraintLayout.visibility = View.VISIBLE
+                    binding.notificationNotFoundConstraintLayout.visibility = View.GONE
+                }else{
+                    binding.notificationFoundConstraintLayout.visibility = View.GONE
+                    binding.notificationNotFoundConstraintLayout.visibility = View.VISIBLE
+                }
+
             }
         }
 
